@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dademit2ugnn4"]
+
+[ext_resource type="Script" uid="uid://crccgxk7wuml2" path="res://actor/camera/camera_limit.gd" id="1_cgfu1"]
+
+[node name="CameraLimit" type="Node" unique_id=703208223]
+script = ExtResource("1_cgfu1")
+
+[node name="TopRightMarker" type="Marker2D" parent="." unique_id=1131965357]
+unique_name_in_owner = true
+
+[node name="BottomLeftMarker" type="Marker2D" parent="." unique_id=861526134]
+unique_name_in_owner = true

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://d0fqfw4kc0oqt"
+path="res://.godot/imported/Additional Scenario_0724.dialogue-8153db6fa3b077ce29c7378713f92880.tres"
+
+[deps]
+
+source_file="res://dialogue/Additional Scenario_0724.dialogue"
+dest_files=["res://.godot/imported/Additional Scenario_0724.dialogue-8153db6fa3b077ce29c7378713f92880.tres"]
+
+[params]
+
+defaults=true

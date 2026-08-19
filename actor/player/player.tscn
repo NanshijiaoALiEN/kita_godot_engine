@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://cmuxccn2iafcu"]
+
+[ext_resource type="Script" uid="uid://djp2m5b4q3j5l" path="res://actor/player/player.gd" id="1_wy78e"]
+[ext_resource type="PackedScene" uid="uid://df7le3tg5xavf" path="res://actor/actor_sprite.tscn" id="2_7gqxp"]
+[ext_resource type="Resource" uid="uid://c2vqlsawnr8ml" path="res://actor/player/player_stat.tres" id="2_ll7f1"]
+[ext_resource type="Script" uid="uid://dvwrjwt8vgsjw" path="res://system/state_machine.gd" id="3_18x1v"]
+[ext_resource type="Script" uid="uid://ndik7s6mykf7" path="res://actor/player/idle_state.gd" id="4_4rij8"]
+[ext_resource type="SpriteFrames" uid="uid://di5wlix3b3n16" path="res://data/tile_resource/sprite/balloon.tres" id="4_jkrrn"]
+[ext_resource type="Script" uid="uid://cdxojvip5jt7w" path="res://actor/player/initial_state.gd" id="5_5ex0y"]
+[ext_resource type="Script" uid="uid://cbsvddndp6ng7" path="res://actor/player/move_state.gd" id="5_18x1v"]
+[ext_resource type="Script" uid="uid://0a2teabfhrh" path="res://actor/player/static_state.gd" id="5_ll7f1"]
+[ext_resource type="Script" uid="uid://bbaoy66nbjam3" path="res://actor/player/nav_state.gd" id="7_edf6h"]
+[ext_resource type="Script" uid="uid://cjqtxhro7mx4h" path="res://actor/player/climb_state.gd" id="8_g32og"]
+[ext_resource type="Script" uid="uid://cphwab8igwv35" path="res://system/event/player_event_trigger.gd" id="9_jqpk3"]
+[ext_resource type="Script" uid="uid://ce1ob5ptbtduo" path="res://actor/player/platformer_idle_state.gd" id="10_ufsc2"]
+[ext_resource type="Script" uid="uid://13nj6asrap8j" path="res://actor/player/platformer_static_state.gd" id="10_vvdac"]
+[ext_resource type="Script" uid="uid://gelubcg8dwev" path="res://actor/player/platformer_move_state.gd" id="11_vvdac"]
+[ext_resource type="Script" uid="uid://ocrg1eisaa3c" path="res://actor/player/platformer_nav_state.gd" id="12_5ex0y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_edf6h"]
+radius = 11.0
+height = 38.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kxuq"]
+size = Vector2(30, 22)
+
+[node name="Player" type="CharacterBody2D" unique_id=974654855 node_paths=PackedStringArray("sprite", "player_event_trigger", "balloon")]
+motion_mode = 1
+wall_min_slide_angle = 0.7853982
+script = ExtResource("1_wy78e")
+player_stat = ExtResource("2_ll7f1")
+sprite = NodePath("ActorSprite")
+initial_direction = 2
+player_event_trigger = NodePath("PlayerEventTrigger")
+initial_state = "StaticState"
+balloon = NodePath("Balloon")
+
+[node name="ActorSprite" parent="." unique_id=1335745103 instance=ExtResource("2_7gqxp")]
+y_sort_enabled = true
+
+[node name="Balloon" type="AnimatedSprite2D" parent="." unique_id=1532395710]
+visible = false
+texture_filter = 1
+position = Vector2(0, -50)
+sprite_frames = ExtResource("4_jkrrn")
+animation = &"annoyed"
+
+[node name="StateMachine" type="Node" parent="." unique_id=1213921022]
+script = ExtResource("3_18x1v")
+metadata/_custom_type_script = "uid://dvwrjwt8vgsjw"
+
+[node name="InitialState" type="Node" parent="StateMachine" unique_id=1443360317 node_paths=PackedStringArray("player")]
+script = ExtResource("5_5ex0y")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="StaticState" type="Node" parent="StateMachine" unique_id=1167749189 node_paths=PackedStringArray("player")]
+script = ExtResource("5_ll7f1")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=2071438102 node_paths=PackedStringArray("player")]
+script = ExtResource("4_4rij8")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="MoveState" type="Node" parent="StateMachine" unique_id=148761257 node_paths=PackedStringArray("player")]
+script = ExtResource("5_18x1v")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="ClimbState" type="Node" parent="StateMachine" unique_id=311084302 node_paths=PackedStringArray("player")]
+script = ExtResource("8_g32og")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="NavState" type="Node" parent="StateMachine" unique_id=1538587475 node_paths=PackedStringArray("player")]
+script = ExtResource("7_edf6h")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="PlatformerStaticState" type="Node" parent="StateMachine" unique_id=525293128 node_paths=PackedStringArray("player")]
+script = ExtResource("10_vvdac")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="PlatformerIdleState" type="Node" parent="StateMachine" unique_id=364383394 node_paths=PackedStringArray("player")]
+script = ExtResource("10_ufsc2")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="PlatformerMoveState" type="Node" parent="StateMachine" unique_id=247481531 node_paths=PackedStringArray("player")]
+script = ExtResource("11_vvdac")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="PlatformerNavState" type="Node" parent="StateMachine" unique_id=519174795 node_paths=PackedStringArray("player", "nav_agent")]
+script = ExtResource("12_5ex0y")
+player = NodePath("../..")
+nav_agent = NodePath("../../NavigationAgent2D")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1270447020]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=229006818]
+position = Vector2(-1, 13)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_edf6h")
+
+[node name="PlayerEventTrigger" type="Area2D" parent="." unique_id=291309672]
+unique_name_in_owner = true
+script = ExtResource("9_jqpk3")
+metadata/_custom_type_script = "uid://cphwab8igwv35"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEventTrigger" unique_id=1115522748]
+position = Vector2(-34, 0)
+shape = SubResource("RectangleShape2D_4kxuq")
+debug_color = Color(0.8884718, 0.32852122, 0, 0.41960785)
+
+[connection signal="go_climb_state" from="." to="StateMachine/StaticState" method="_on_player_go_climb_state"]
+[connection signal="go_climb_state" from="." to="StateMachine/MoveState" method="_on_player_go_climb_state"]
+[connection signal="go_move_state" from="." to="StateMachine/StaticState" method="_on_player_go_move_state"]
+[connection signal="go_move_state" from="." to="StateMachine/ClimbState" method="_on_player_go_move_state"]
+[connection signal="go_move_state" from="." to="StateMachine/PlatformerStaticState" method="_on_player_go_move_state"]
+[connection signal="go_nav_state" from="." to="StateMachine/StaticState" method="_on_player_go_nav_state"]
+[connection signal="go_nav_state" from="." to="StateMachine/NavState" method="_on_player_go_nav_state"]
+[connection signal="go_nav_state" from="." to="StateMachine/PlatformerStaticState" method="_on_player_go_nav_state"]
+[connection signal="go_nav_state" from="." to="StateMachine/PlatformerNavState" method="_on_player_go_nav_state"]
+[connection signal="go_static_state" from="." to="StateMachine/IdleState" method="_on_player_go_static_state"]
+[connection signal="go_static_state" from="." to="StateMachine/MoveState" method="_on_player_go_static_state"]
+[connection signal="go_static_state" from="." to="StateMachine/ClimbState" method="_on_player_go_static_state"]
+[connection signal="go_static_state" from="." to="StateMachine/PlatformerIdleState" method="_on_player_go_static_state"]
+[connection signal="go_static_state" from="." to="StateMachine/PlatformerMoveState" method="_on_player_go_static_state"]

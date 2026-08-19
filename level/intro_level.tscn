@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cooniylfxb4sh"]
+
+[ext_resource type="Script" uid="uid://br1fyfsiw5ehl" path="res://level/base_level.gd" id="1_cpsyr"]
+[ext_resource type="Script" uid="uid://bgq8hq57kkjhb" path="res://system/event/event_tree.gd" id="2_t62w0"]
+[ext_resource type="Script" uid="uid://ch8qqurlrurul" path="res://system/event/dialogue_event.gd" id="3_e8cc6"]
+[ext_resource type="Resource" uid="uid://d2e6kcguac78r" path="res://dialogue/keiko/start.dialogue" id="4_l2ybx"]
+[ext_resource type="PackedScene" uid="uid://db33tf25kgigj" path="res://actor/camera/main_camera.tscn" id="5_t62w0"]
+[ext_resource type="PackedScene" uid="uid://b2x3ax5wjfu5y" path="res://system/spawn_point.tscn" id="6_e8cc6"]
+
+[node name="Intro" type="Node2D" unique_id=464303009]
+script = ExtResource("1_cpsyr")
+metadata/_custom_type_script = "uid://br1fyfsiw5ehl"
+
+[node name="Black" type="CanvasLayer" parent="." unique_id=415749892]
+
+[node name="ColorRect" type="ColorRect" parent="Black" unique_id=1490765162]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="EventTree" type="Node2D" parent="." unique_id=1025201761]
+script = ExtResource("2_t62w0")
+auto_start = true
+metadata/_custom_type_script = "uid://bgq8hq57kkjhb"
+
+[node name="DialogueEvent" type="Node" parent="EventTree" unique_id=1773606225]
+script = ExtResource("3_e8cc6")
+dialogue = ExtResource("4_l2ybx")
+metadata/_custom_type_script = "uid://ch8qqurlrurul"
+
+[node name="MainCamera" parent="." unique_id=1139513995 instance=ExtResource("5_t62w0")]
+
+[node name="SpawnPointGroup" type="Node" parent="." unique_id=642613686]
+
+[node name="Start" parent="SpawnPointGroup" unique_id=743865110 instance=ExtResource("6_e8cc6")]
+position = Vector2(287, 48)

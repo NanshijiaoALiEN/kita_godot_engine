@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://coviun7twrgvo"]
+
+[ext_resource type="Script" uid="uid://dlsibwj5sp6oq" path="res://interface/transition_screen.gd" id="1_igqjc"]
+
+[node name="TransitionScreen" type="Control" unique_id=1437380392]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_igqjc")
+
+[node name="Flashlight" type="ColorRect" parent="." unique_id=594983782]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1595278894]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

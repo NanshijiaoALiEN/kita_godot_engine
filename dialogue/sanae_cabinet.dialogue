@@ -1,0 +1,251 @@
+~ start_climb
+#クモの糸を利用して棚を登る
+Me: ここからなら貰った蜘蛛の糸を使って登る事ができそうだな、[wait=0.5]早速試してみよう。
+do wait(1.0)
+It: 棚を蜘蛛の糸を使って登りますか？?
+- はい
+	do! Sound.stop_music(2)
+	do Interface.transition.fade_in(2.0)
+	do wait(2.0)
+	do World.switch_level(World.ABOVE_CABINET)
+	=> END
+- いいえ
+	=> END
+
+
+~ choose_path
+#主人公は棚へ登り、留まる(ブラジャールート)か蜘蛛の糸の命綱で降りる(見つかって振り落とされる)選択
+do Sound.stop_music(2)
+do wait(1.0)
+
+do! Sound.play_sound(Sound.EVENT_SOUND.BOOM_1)
+do World.camera.camera_shake(1.0, 2.0)
+do wait(0.5)
+
+do! Sound.play_sound(Sound.EVENT_SOUND.BOOM_1)
+do World.camera.camera_shake(1.25, 2.0)
+do wait(0.5)
+
+do! Sound.play_sound(Sound.EVENT_SOUND.BOOM_1)
+do World.camera.camera_shake(1.5, 2.0)
+do wait(0.5)
+
+
+Sanae: [font_size=48]あ……[wait=0.5]入れる調味料を忘れてしまいました。
+do Sound.play_music(World.current_level.level_music_2)
+
+do wait(0.1)
+do Interface.player.show_picture("CG19")
+do wait(2.0)
+Sanae: [font_size=48]えっと、[wait=0.5][speed=0.3]確かここら辺に[/speed]……
+It: 俺が登っていた棚に向かって歩んでいく早苗。その巨大な足が一歩ずつ繰り出される毎に俺に揺れが襲いかかる。
+do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+Me: [wave amp=25 freq=5]う、うわわわ……[/wave][wait=0.5]なんていう揺れだ……！ただ、早苗様が棚の中を探しているだけなのに……
+It: 引き起こされる揺れによって、俺は足元を掬われてまともに立てない状況になっていた。
+do Interface.player.remove_picture("CG19")
+do World.player.show_balloon("default")
+Me: この状況は非常に不味い……！[wait=0.5]こ、[wait=0.5]ここは……
+- 蜘蛛の糸の命綱で降りる
+	 #蜘蛛の糸の命綱で降りる⇒早苗さんに見つかって振り落とされる
+	Me: このままここに留まっていたら振り落とされる……！[wait=0.5]そうだ！確かこの蜘蛛の糸は命綱にも使えると言っていたな……
+	Me: ならば、試してみる価値はありそうだな！
+	It: 俺は、小刻みな揺れに襲われながらも脱出する準備を始めた。
+	It: その蜘蛛の糸は粘着性があり、棚の地面に張り付ける事が出来た。そしてそのままもう片方の端を棚の外へ投げ出していく。
+	do World.player.show_balloon("speechless")
+	do wait(1.5)
+	do World.player.show_balloon("idea")
+	do wait(1.0)
+	Me: よし！[wait=0.5]完成だ！[wait=0.5]これを伝っていれば……
+	Sanae: [font_size=48]うーん……どこに仕舞ったかなぁ……？
+	do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+	do World.camera.camera_shake(1.0, 1.5)
+	Me: 俺に伝わる揺れがどんどん大きくなっていく……早苗が奥の方を探し始めたのか……？
+	It: 急ごう。早くここから脱出しなければ振り落とされてしまうな。
+	do World.current_level.qte_event.start()
+	=> END
+
+	 #(上から蜘蛛の糸を伝っていくQTEミニゲームが始まる)
+	 #⇒(失敗)　#蜘蛛の糸を掴み損ねてそのまま落下する
+	 #⇒(成功)　#踏みつぶされて終焉を迎える（第1章終了）シナリオへ
+
+- 留まる
+	do World.switch_level(World.BOOB_CRUSHED_END)
+	=> END
+　
+~ climb_fail_end
+#(失敗)　#蜘蛛の糸を掴み損ねてそのまま落下する
+Me: しまっ……[wait=1]糸を掴み損ねて落ち……[wait=1][b][wave amp=15 freq=20]うわああああああ！！[/wave][/b]
+do Sound.play_sound(Sound.EVENT_SOUND.FALL)
+do wait(5.0)
+It: 蜘蛛と糸からの落下は、まるで高層ビルから落下していく感覚だった。俺は茶色の地面にたたきつけられた。
+Me: がはっ……！……っいてて
+It: 俺は仕事柄身体を鍛えているといのもあり、なんとか地面に叩きつけられても生き延びる事が出来た。
+do wait(3.0)
+It: しかし、[wait=1]その身体の頑丈さが仇となることを今から思い知る事になった。
+do wait(2.0)
+do Sound.play_music(World.current_level.level_music)
+do Interface.player.show_picture("CG27")
+Me: [wave amp=25 freq=5]あ……あ……[/wave]
+It: 落下し、そこに映された光景はもはや絶望でしかなかった。
+do Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+It: そこには、肌色の五つ首の化け物にしか見えない……早苗様の足指が視界を覆っていた。
+Me: に、逃げなきゃ……！
+It: 俺は、打ち付けた身体に鞭を打ってでも逃げようとした。
+It: しかし、早苗様の足指から放たれる汗が入り混じった臭いが、息を切らして呼吸をする度にどんどん入り込んでいき肺の空気を上書きしていく。
+do Interface.player.remove_picture("CG27")
+do wait(2.5)
+do Interface.player.show_picture("CG30")
+It: しかし、それは特に嫌な気はしなかった。寧ろ好きな人の臭いを独り占めできるのは幸福感が感じられた。
+It: 俺はいつの間にか逃げる事を止めていた。
+It: その瞬間を五つ首の化け物は見逃さなかった。
+do Sound.play_sound(Sound.EVENT_SOUND.BOOM_1)
+do Interface.player.remove_picture("CG30", 0.1)
+do! Sound.stop_music(2)
+do wait(3.0)
+It: 五つ首の化け物という名の早苗の愛指は、[wait=0.5]美味しそうに地面に落ちた虫を食べるかのようにぐにぐにと動かした。
+It: その足指がその場を離れた時は、[wait=0.5]跡形もなく無くなっていた。
+do World.game_over_level()
+=> END 
+
+~ fall_into_bra_end
+#留まった場合⇒振り落とされブラジャーへ
+Sanae: [font_size=48][b]あれ？[/b][wait=0.5]ここら辺に調味料があったはずなんだけどな……
+do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+It: 早苗は、棚の中を手で漁って調味料を探す。それだけなのに棚の上の俺に大地震が襲い掛かる。
+Me: だ、駄目だ……！揺れに耐えきれない……[wait=1][wave amp=15 freq=20]うわああああああ！！[/wave]
+do Sound.play_sound(Sound.EVENT_SOUND.FALL)
+do Interface.player.remove_picture("CG19")
+do wait(2.0)
+Me: …………[wait=1]俺は、[pulse freq=1.5 color=#ffffff60 ease=-2.0]生きているのか？[/pulse]
+Me: どうやらこの柔らかい地面のお陰で衝撃が抑えられて助かったようだな
+Me: しかし……[wait=0.5]ここはどこだ？[wait=1]薄暗くて何も見えない……
+#do (足音のようなSEを鳴らし、その後ぽよんっというSEを鳴らす)
+It: 大きな揺れとともに自分を支えてくれた柔らかい地面は俺を押さえつけるように形を変えた。
+Me: わっぷ！[wait=0.5]いきなり壁が……！？ 
+It: その迫ってきた壁は男の腹を圧迫する。それによって男はその壁を舐めさせられた。
+Me: な、なんだかしょっぱいぞ……？[wait=1]それに何だか蒸し暑いし壁も少しばかり湿っているような……
+Me: もしかしてここは……
+do wait(2.0)
+do Interface.player.show_picture("CG31")
+Me: [font_size=32][b]早苗様の胸の谷間なのか！？[/b][/font_size]
+do Interface.player.remove_picture("CG31")
+do wait(2.0) 
+do Interface.player.show_picture("CG21")
+It: そう、棚の上から振り下ろされた男はそのまま早苗の頭を通過し落下していった。
+It: 本来早苗は胸元は締めているのだが、猛暑日もあってか、早苗は胸元を開けて過ごしていたのである。
+do Interface.player.remove_picture("CG21")
+do wait(2.0)
+do Interface.player.show_picture("CG22")
+It: 男はその開けた胸元に吸い込まれていった。
+It: そして、男は早苗様の胸という牢獄に囚われてしまったのである。
+do Interface.player.remove_picture("CG22")
+do wait(2.0) 
+do Interface.player.show_picture("CG31")
+Me: まずい……[wait=1]ここにいる事は早苗様にでもバレたら、俺は容赦なく潰されてしまう！
+Me: と、とりあえずこの胸を押し返して脱出しないと……！
+It: 音は胸という肌色の壁を押したり殴ったり試みる。[wait=0.5]しかし、その威力は早苗の巨大すぎる胸に全て吸収されていく。
+Me: [pulse freq=1.0 color=#ffffff40 ease=-2.0]はぁ……[wait=1]はぁ……[wait=1][/pulse]ダメだ、びくともしないぞ……
+do wait(2.0) 
+Me: しかし……[wait=1]早苗様は汗をかいているはずなのに、凄くいい匂いがするな……[wait=0.5]きっと良いものを使って身体を洗っているんだろうな……
+Me: この汗も実は甘くて、飲み物として摂取できればこのままここで生活も……！
+It: 早苗の胸に充満する匂いは、男の脳を支配していき脱出という行為をさせないようにしていく。
+Sanae: [font_size=48]……なんだか胸元がキツイな..
+do wait(1.0)
+It: その果てた男を早苗の胸は見逃すはずがなかった。彼女は胸を調整するために両端から押さえつけていく。
+Sanae: [font_size=48]よいしょ……[wait=0.5]っと
+do Interface.player.show_picture("CG32", 0.1)
+do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+do wait(2.0)
+do Interface.player.show_picture("CG33")
+Sanae: [font_size=48]う～ん……また胸大きくなっちゃったのかな……？新しいブラ探しに行かなきゃな……
+It: 男は呆気なく早苗の胸に挟み潰され、後に胸元の汗で洗い流され跡形も無くなったのであった。
+do Interface.player.remove_all_picture(1.0)
+do wait(2.0)
+do World.game_over_level()
+=> END
+
+~ climb_success
+# (成功)踏みつぶされて終焉を迎える（第1章終了）
+Me: [pulse freq=2.0 color=#ffffff60 ease=-2.0]はぁ……[wait=0.5]はぁ……[/pulse][wait=0.5]いつになったら地上につくんだ？結構降りているはずなんだが……
+It: ふっと周囲を見渡してみる。[wait=1]棚の上から出発したときと景色が全然変わっていないように思えた。
+It: 確かに進んではいるのだ。[wait=1]ただ、周りが巨大すぎて遠近感が狂っているだけなのだ。
+Me: いや、弱音なんか吐いていられない。ここで早苗様に見つかったりでもしたらどうなる……
+# (ここで暗転)
+Me: か……
+do wait(2.0)
+do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+do Interface.player.show_picture("CG34")
+It: 俺の視界は、緑色と黒色のグラデーションの天井で覆いつくされていた。
+Sanae: [font_size=48]なんか虫が飛んでいますね。[wait=1]この季節になった途端急に多くなりますよね……。
+It: その近づぎる目つきは、巨大すぎて全体像が分からなくても俺に繊細に伝わってきた。[wait=1]明らかに敵意だった。
+Me: ひ……[wait=0.5]ひぇ……
+It: 俺は、巨大な早苗様の敵意の眼差しによって一歩も動けなくなってしまっていた。
+do wait(1.0)
+Sanae: [font_size=48]ほんと鬱陶しい……。
+do Interface.player.remove_picture("CG34") 
+do wait(2.0)
+do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+do Interface.player.show_picture("CG36") 
+It: 蜘蛛の糸で身動きが取れない俺に向かって空気を振動させながら何かが近づいてくる。
+It: それは、[b]早苗様の手だった。[/b][wait=1]その手の持つ5本の指は、俺にとっては建物の支柱のような太さであった。
+It: そのうちの1本が、曲がった状態で俺に向けられる。[wait=1]何か力を貯めこんでいるように見えた。
+It: そして―
+do Interface.player.remove_picture("CG36", 0.1)
+Me: [b]がはっ！！[/b]
+It: 早苗様の巨大すぎる中指に貯めこまれた力は俺に向かって放たれた。
+It: その威力は凄まじく、直撃した中指によって俺はいとも簡単に吹き飛ばされた。
+do! Sound.play_sound(Sound.EVENT_SOUND.FALL)
+do wait(2.7)
+do! Sound.play_sound(Sound.EVENT_SOUND.BODY_HIT)
+do wait(3.0)
+do Interface.player.show_picture("CG14")
+It: デコピンによって遠くに吹き飛ばされ、地面に激突する。
+It: 幸い、俺は仕事柄鍛えていたのもあって身体は頑丈にできていた。
+It: しかし、[wait=1]その幸いが一瞬にして地獄への引き金になろうとしていた。
+do Sound.play_music(World.current_level.level_music)
+do Interface.player.remove_picture("CG14")
+do! Sound.play_sound(Sound.EVENT_SOUND.DISTANT_BOOM_3)
+do wait(2.0)
+do Interface.player.show_picture("CG15")
+It: 吹き飛ばされた方向に地響きを起こしながら早苗様という女神が歩いてくるのだ。
+Me: に、[wait=0.5]逃げなきゃ……
+It: 俺は、打ち付けた身体に鞭を打ってでも逃げようとした。[wait=1]しかし、打ち付けられた身体は動く事を拒否していた。
+Me: ぐっ……[wait=0.5]骨がイッたか……？[wait=1]か、[wait=0.5][pulse freq=2.0 color=#ffffff60 ease=-2.0]身体が動かない……[/pulse]
+do Interface.player.remove_picture("CG15")
+do! Sound.play_sound(Sound.EVENT_SOUND.DISTANT_BOOM_3)
+do wait(2.0)
+do Interface.player.show_picture("CG16")
+It: 地面で藻掻いている間にも、女神の足がどんどん近づいてくる。揺れも地響きから地震レベルになっていく。
+Me: お願いだ……[wait=0.5]俺の足、[shake rate=20 level=10]動いてくれ……[/shake]
+It: 俺は逃げたい一心で身体を必死に動かした。[wait=0.5]辛うじて足が少しだけ動かす事が出来た。
+It: しかし、[wait=1]身体を動かした事は俺を絶望へと誘った。
+Sanae: [font_size=48]まさかデコピンで飛ばされたのにまだ生きているんですか？[wait=1]本当にしぶとい虫ですね。
+do Interface.player.remove_picture("CG16")
+do! Sound.play_sound(Sound.EVENT_SOUND.DISTANT_BOOM_3)
+do wait(2.0)
+do Interface.player.show_picture("CG17")
+Sanae: [font_size=48]であれば、[wait=0.5]私の足で[b]踏み潰し[/b]てさしあげます。
+It: 揺れを起こしながら、右足という名の綺麗な肌色の建物が上昇していく。
+It: そして俺の視界は、照明という太`陽を遮り周辺はどんどん夜が更けたかのように暗くなっていく。
+It: その足裏という天井は黒く汚れており、汗によって湿って甘酸っぱい臭いを放っていた。
+Me: 俺は今から早苗様に踏みつぶされて……[wait=0.5]そして早苗様の足裏の一部になるのか……
+do wait(1.0)
+Me: ……[wait=1]それも悪くないのかもしれないな
+It: 大好きな人に踏み潰される。[wait=1]足裏から放たれる臭いによって脳がそう支配させているのか俺は逃げる事を放棄していた。
+Sanae: [font_size=48][speed=0.5]……？[/speed][wait=1]なんだか動かなくなりましたね。[wait=0.5]流石に息絶えましたか？
+Sanae: [font_size=48]まぁ、念には念を入れて踏み潰して確実に殺しておきましょうかね。
+do Interface.player.remove_picture("CG17", 0.1)
+do! Sound.play_sound(Sound.EVENT_SOUND.DISTANT_BOOM_2)
+do! Sound.stop_music(2)
+do wait(3.0)
+do Interface.player.show_picture("CG26")
+do Interface.player.move_to_bottom("CG26", 5.0)
+do wait(2.0)
+It: 早苗の足裏が何回も俺の身体を踏みつけていく。[wait=1]俺の身体は足裏についた汚れともはや同化していた。
+Sanae: [font_size=48]ふぅ。[wait=1]これで流石に動かなくなったでしょう。
+Sanae: [font_size=48]さて、[wait=0.5]気を取り直して居間で昼食にしましょう♪
+do Interface.player.remove_picture("CG26")
+do wait(2.0)
+do World.switch_level(World.ENDING)
+=> END
+# ⇒このシナリオ後、闇店の前にテレポート

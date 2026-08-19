@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bkwatf8adlk1b"]
+
+[ext_resource type="Script" uid="uid://doyawwd17u8fk" path="res://level/root.gd" id="1_mx2rf"]
+[ext_resource type="PackedScene" uid="uid://h0elbv5gkn2r" path="res://interface/pause_screen.tscn" id="2_3hbfx"]
+[ext_resource type="Script" uid="uid://cvtdct1ds48tj" path="res://system/world_node.gd" id="2_jkfj7"]
+[ext_resource type="PackedScene" uid="uid://coviun7twrgvo" path="res://interface/transition_screen.tscn" id="2_urc1q"]
+[ext_resource type="PackedScene" uid="uid://dpx0olinot2x5" path="res://interface/title_screen.tscn" id="3_urc1q"]
+[ext_resource type="PackedScene" uid="uid://crt52jb5a71n7" path="res://interface/picture_player.tscn" id="6_17qf6"]
+
+[node name="Root" type="Node" unique_id=586944313 node_paths=PackedStringArray("world_node", "music_player", "sound_player", "pause_screen", "title_screen", "transition_screen", "picture_player")]
+script = ExtResource("1_mx2rf")
+world_node = NodePath("World")
+music_player = NodePath("Sound/MusicPlayer")
+sound_player = NodePath("Sound/SoundPlayer")
+pause_screen = NodePath("Interface/PauseScreen")
+title_screen = NodePath("Interface/TitleScreen")
+transition_screen = NodePath("Interface/TransitionScreen")
+picture_player = NodePath("Interface/PicturePlayer")
+
+[node name="World" type="Node2D" parent="." unique_id=701011266]
+y_sort_enabled = true
+script = ExtResource("2_jkfj7")
+metadata/_custom_type_script = "uid://cvtdct1ds48tj"
+
+[node name="Sound" type="Node" parent="." unique_id=155026501]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Sound" unique_id=1797978374]
+unique_name_in_owner = true
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="Sound" unique_id=961718398]
+unique_name_in_owner = true
+
+[node name="Interface" type="CanvasLayer" parent="." unique_id=1821365567]
+layer = 20
+
+[node name="PicturePlayer" parent="Interface" unique_id=922862897 instance=ExtResource("6_17qf6")]
+
+[node name="PauseScreen" parent="Interface" unique_id=1393484392 instance=ExtResource("2_3hbfx")]
+visible = false
+
+[node name="TitleScreen" parent="Interface" unique_id=1992689744 instance=ExtResource("3_urc1q")]
+visible = false
+
+[node name="TransitionScreen" parent="Interface" unique_id=1437380392 instance=ExtResource("2_urc1q")]

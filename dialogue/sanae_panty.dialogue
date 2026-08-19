@@ -1,0 +1,231 @@
+# **早苗が部屋の床に座り、主人公がスカート内に潜り込んでパンツ（胖次）を登ろうとする**シナリオ
+
+
+#スカートの中を探索するかの分岐ルート
+~ panty_root
+It: ご飯を食べ終わった早苗は、足を広げ座って寛いでいる。[wait=1]こちらに気づいている気配はまるで無いようだ。
+It: 足の間に向かって進みますか？
+ - はい
+	do World.player.show_balloon("speechless")
+	do Interface.player.show_picture("CG44")
+#	(聳え立つパンツのCGを映す)
+	It: 巨大な肌色の柱の間にたどり着いた末に見えた景色は、赤色の布地が広がっていた。
+	do Interface.player.move_to_top("CG44", 6.0)
+	Me: これはもしかして……[wait=1][b][color=pink]早苗様のパ…[wait=0.5]パンツ…なのか…！[/color][/b]
+	It: 彼女のパンツ周辺は[wait=0.5]先程の草履の上と比べると遥かに良い匂いが広がっていた。
+	It: パンツによって厳重に守られているのは女の子にとって大事なところ、[wait=1]やはりケアを怠ってはいない様子だった。
+	Me: 早苗様のパンツ……[wait=1]とても良い匂いだ……！
+	Me: さ、触りたい……！[wait=1][b]こんなの我慢できるかよ…！！[/b]
+	do Interface.player.remove_picture("CG44")
+	It: その甘い匂いに釣られ、[wait=0.5]俺は聳え立つパンツの壁に向かって足を進めていた。
+	do World.current_level.disable_collission()
+	do World.player.go_nav(World.current_level.on_panty_goal)
+	set World.player.is_climbing = true
+	set Global.is_climbing_panty = true
+	do World.current_level.enable_collission()
+	#  (早苗パンツ探索マップへ)
+	=> END
+	
+ - いいえ
+	Me: 折角早苗様の部屋に入ることが出来たんだ。[wait=0.5]ここで見つかって潰されたらここまでの苦労が水の泡だな…
+	Me: 一旦ここから離れて他の所を探索してみるか。
+	=> END
+
+# **部屋探索にて、主人公が早苗を調べる事でスカート内に潜り込んでパンツ（胖次）を登ろうとする**シナリオ
+~ sanae_panty
+if Global.sanae_panty:
+	do World.camera.camera_zoom(1.75, 1.0)
+	=> END
+
+It: 巨大な肌色の柱の間にたどり着いた末に見えた景色は、赤色の布地が広がっていた。
+Me: これはもしかして……[wait=1][b]早苗様のパ…[wait=0.5]パンツ…なのか…！[/b]
+It: 彼女のパンツ周辺は[wait=0.5]先程の草履の上と比べて遥かに良い匂いが広がっていた。
+It: パンツの奥にあるのは女の子にとって大事なところ、[wait=1]やはりケアを怠ってはいない様子だった。
+Me: 早苗様のパンツ……とても良い匂いだ……[wait=1]
+Me: さ、触りたい……！[wait=1][b]こんなの我慢できるかよ…！！[/b]
+It: その甘い匂いに釣られ、[wait=0.5]俺は聳え立つパンツの壁に向かって足を進めていた。
+do World.camera.camera_zoom(1.75, 1.0)
+set Global.sanae_panty = true
+=> END
+
+~ panty_event_1
+#パンツポジを修正してそのまま圧し潰される
+It: 布の生地を掴みながら登っていく。[wait=1]登る度に大好きな早苗様の匂いが濃くなっていっているのが感じられた。
+Me: ここ…若干の隙間があるな……
+It: ここは肌色と布の境目だろうか
+do Interface.player.show_picture("CG50")
+Me: ここから奥に入り込めば……[wait=1]パンツの向こう…に行けるんだよな…
+Me: [wave amp=25 freq=5] ……[wait=1]はぁ……[wait=1]はぁ……！！[/wave]
+It: そう考えた瞬間、理性に制御が効かなかった。[wait=1]パンツ越しの世界、そこはきっと男にとって天国が広がっていたと思ったのだから。
+It: 隙間からパンツの生地を今自分が出せる全ての力を出し、かき分けて入り込んでいく。
+Sanae: [font_size=48]んっ……[/font_size]
+It: しかし、理性を失った男は目の前の状況に夢中になりすぎてしまったのだ。
+do wait(3.0)
+Sanae: [font_size=48]……う～ん…[wait=0.5]なんかちょっとパンツに違和感が…[/font_size]
+do Interface.player.show_picture("CG52")
+Sanae: [font_size=48]んっ……[wait=1]よいしょっ…と[/font_size]
+do Interface.transition.fade_in(0.5)
+do! Sound.play_sound(Sound.EVENT_SOUND.SQUISH)
+#(潰されるような効果音を流す)
+Sanae: ……[wait=1]よし、パンツの違和感無くなりましたね！
+do Interface.player.show_picture("CG53")
+do Interface.transition.fade_out(1.0)
+Sanae: [font_size=48]やっぱこう暑いと、汗で違和感が出てきちゃうな……ほんとに嫌になりますね…
+It: 男は何も分からないまま一瞬で潰されて、パンツのシミになってしまった。
+It: 潰された理由が[b]登っていたパンツの持ち主が位置調整をしただけ[/b]なんてシミとなった男には知る由も無かった。
+do World.game_over_level()
+=> END
+
+
+#2.早苗の匂いに惹かれて調査するイベント
+~ panty_event_2
+It: 男は布地に覆われた断崖を一心不乱にひらすら登っていくととある場所に辿り着いた。
+It: その場所は周囲と比べてふっくらとしていた。[wait=1]試しに力強く押し込んでも力が吸収され跳ね返ってくるほどだった。
+Me: す、凄い柔らかい…[wait=0.5]まるで高級ベッドみたいだ…！
+Me: しかもさっきからしているこの匂い…[wait=1]凄く良い匂いだ…
+It: 汗で蒸れた事による臭いと布越しに放たれている女の子特有の匂いが混ざりあい、空気中にどんどん広がっていく。
+It: それは、決して良い匂いでは無かったが、[wait=1][color=pink][b]パンツ越しに放たれているという事実が[/b][/color][wait=0.5]男の脳は「その匂いは格別である」と変換させていた。
+Me: ……[wait=1]バ、[wait=0.5]バレないよな？
+do World.player.show_balloon("speechless")
+It: 「バレるかもしれない。」[wait=1]そんな考えを過ったが身体は既に行動に移していた。
+do wait(1.0)
+It: 目の前の布地の地面に向かって顔を埋め、[wait=0.5]鼻から思い切り吸い込んだ。
+It: 汗の臭いと女の子特有匂いのハーモニーを堪能する。周囲で嗅いだ時よりも圧倒的に濃い匂いが男の肺に送り込まれていく。
+Me: …！！[wait=1]な、[wait=0.5]なんて素晴らしい匂いなんだ…！[wait=1]ずっと嗅いでいられるぞ…！
+It: 埋めた鼻を更に布地の地面に強く押さえつけ、先程よりも力強く息を吸い込んでいく。
+do wait(2.0)
+Me: [wave amp=25 freq=5]……[wait=1]ぷはぁ…！[wait=1]はぁ…[wait=0.5]はぁ…[/wave]
+do World.player.show_balloon("sweat")
+It: 十分に匂いを堪能した男は顔を離す。その顔は、実に恍惚な表情を浮かべていた。
+It: ずっとずっと一目惚れしていた彼女に気づかれずに、あられもない姿をこうして堪能できるのは夢にまで見た光景だった。
+do wait(1.0)
+It: しかし…[wait=1][b]欲望というものは底知れぬものなのである。[/b][wait=0.5]大好きな人の匂いを取り込んだ男の欲望はより増大していった。
+Me: [b]も、もっと早苗様を堪能したい…！[/b]
+Me: 早苗様のパンツに張り付けるなんて二度と無いからな。[wait=1][color=red][b]それにもっと上に登れば…！[/b][/color]
+It: 本当はここで彼女をもっと堪能したいの山々だった。
+It: しかし、この上にあるメインディッシュの前にお腹一杯になってしまっては勿体無い。[wait=1]最悪メインディッシュを堪能した後に満足できない場合はまたここに戻ってくればいい。
+It: 男は決意を固め、その場を後にした。
+=> END
+
+
+#3.二次縮小によって早苗のアソコに落下しそのまま迷子になる(縮小が止まらずアソコの細菌と化す)
+~ panty_event_3
+It: 登り始めて一体どれくらいの時間が経ち、どれくらいの高さを登ったのだろうか。
+It: 登っても登っても一向に景色は変わらず、[wait=1]自分の小ささを改めて突き付けられているようだった。
+It: しかし[wait=0.5]「早苗様のパンツを登っている」という事実は男を鼓舞させ、[wait=1]不思議と疲れを感じさせなかった。
+do wait(2.0)
+It: 登り続けると、[wait=1][b]目の前に布の生地が他の場所より膨らんでいる山が見えてきた。[/b]
+Me: これは……[wait=0.5]もしかして……！
+It: 俺は登る勢いを上げ、一気にその山に近づく。[wait=1]麓から見たその山は[wait=0.5]首を限界まであげないと全貌が見えないほど巨大だった。
+Me: (俺は軽くその膨らんでいる山に手を触れてみる。)
+do wait(1.0)
+Sanae: んっ……
+do World.camera.camera_shake(0.8, 1.5)
+do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+#(画面を揺らす) 
+do World.player.show_balloon("default")
+Me: [shake rate=20 level=10]う、うわあああああああ！？[/shake]
+It: その地面に触れた瞬間、大きな揺れが男を襲った。
+It: しかし、その大きな揺れによって男の予想は確証に生まれ変わった。
+Me: …間違いない…[wait=1][color=pink][b]ここは早苗様の股間…！[wait=1]そしてこれは早苗様のクリトリス…！[/b][/color]
+It: ついに辿り着けた念願の場所。
+It: その場所は一層彼女の匂いが濃厚で、自分の今の大きさでもとても柔らかくて素晴らしい心地良さを感じた。
+It: そんな周囲の環境と大好きな彼女の股間に辿り着けた高揚感によって、男の妄想力を遺憾なく発揮された。
+Me: もし、俺と早苗様の娘が作れたら…きっとその赤ちゃんは早苗様に似て滅茶苦茶可愛くなるんだろうな！
+Me: そして、大人になった娘は俺みたいに強くて早苗様みたいに美女になって…
+do wait(1.0)
+Me: まぁ、そんな願い叶うわけないんだろうけど…。そもそも今なんて大きさ違いすぎてエッチすら出来ないだろうしな。
+Me: (自分の妄想を奥底にしまい込んで、俺はその場から移動しようとする。)
+Sanae: [font_size=48][wave amp=25 freq=5]う～ん…？[/wave][/font_size]
+do World.camera.camera_shake(1.0, 2.0)
+do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+#(画面を揺らす)
+do World.player.show_balloon("default")
+Me: [wave amp=25 freq=15]うわあああっ…！[/wave]
+It: 流石に股間の違和感に気づき始めたのか、[wait=1]下半身を忙しなく動かし始める早苗。
+Me: や、やばい…！[wait=0.5]流石に好き放題しすぎたか…！？
+Me: い、急いで逃げないと…！
+It: だが、彼女が忙しなく動く事で男が張り付いている股間では大地震が起き、[wait=1]まともに立てれない状態が続く。
+#(男が鏡を落とす)
+do World.camera.camera_shake(1.0, 2.0)
+Me: しまった！[wait=0.5]鏡が！
+It: 続く揺れによって、[wait=0.5]仕舞っていた鏡が放り出される。
+It: 落とした鏡を急いで拾おうとした。[wait=1]その時、[wait=0.5]男はその鏡に映っている光景を目の当たりにした。
+It: 鏡には、[wait=1.5][color=red][b]まるで何かの生物の中のようなピンク色の景色が映りこんでいた。[/b][/color]
+do World.player.show_balloon("question")
+Me: な、[wait=0.5]なんだよこれ…？
+It: 突然見せられたものに困惑したが、[wait=0.5]男はふとあの商人の言葉を思い出した。
+do Interface.transition.fade_in(0.25)
+It: [b]『その鏡は、お前の願いを叶えてくれる。』[/b]
+It: 続けて自分が言った言葉を振り返ってみた。
+Me: [color=red][b](『俺と早苗様の娘が作れたら……』)[/b][/color]
+do Interface.transition.fade_out(0.25)
+Me: この鏡が映っているのって…[wait=1]まさか……
+It: ピンク色の景色を映していたその鏡が眩い光を出し始める。
+do! Sound.play_sound(Sound.EVENT_SOUND.TELEPORT)
+It: そしてその光が治まったその時、男の視界に異変が出始めていた。
+do! World.camera.camera_zoom(2.0, 1.0)
+do World.current_level.player_shrink()
+Me: お、おい……[wait=1]何かの冗談なのか……？
+It: 自分が先程いたパンツの場所……[wait=1][b]その布地の繊維が視界を覆いつくしていた。[/b]
+It: このパンツを履いている主からしたら、[wait=1]男なんてパンツの繊維にいるダニ程度にしか見えないほどに男は縮小されていた。
+do wait(1.0)
+It: 鏡は男の「早苗から見つからずに逃げたい」という願いも同時に叶えていたのだ。
+It: それはつまり、[color=red][b]早苗様に認識されなかったら逃げれたも同然という解釈であった。[/b][/color]
+It: どんどん男の身体は縮小されていき、パンツの布地の繊維の隙間を簡単に抜けられるほどになっていた。
+do World.camera.camera_shake(1.2, 2.0)
+do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+do wait(1.0)
+#(画面を揺らす)
+Sanae: [font_size=36]なんだかパンツの方が痒いですねぇ…[/font_size]
+do World.camera.camera_shake(1.0, 2.0)
+do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+do wait(1.0)
+#(画面を揺らす)
+It: まるで世界の終わりを知らせるような大地震が男を襲う。
+do! World.camera.camera_zoom(3.0, 1.0)
+do World.current_level.player_shrink_more()
+It: [color=red]その大地震を起こした本人はただ違和感の確認のためにほんの少し身体を動かしただけなのに。[/color]
+Me: [shake rate=20 level=10][font_size=12]う、うわああああああああ！！！[/font_size][/shake]
+do Interface.player.show_picture("CG41")
+It: 男はいとも簡単に放り出させて、[wait=1]パンツの布地の繊維の隙間に振り落とされた。
+It: そのまま自由落下していく男の体。パンツ越しにあるあの場所に向かって。
+do Interface.transition.fade_in(1.0)
+#(画面をゆっくりと真っ暗にする。)
+do wait(3.0)
+It: 男性にとっては相手が大好きな女性であるとなると、[wait=1]是非とも人生で一度は自分の性器を女性の膣に入れて全身で女性を味わいたいものなのだ。
+It: 気持ちよくて……大好きな人の匂いが感じられて……大好きな人の膣というのはまさに[b]天国[/b]みたいな場所に違いない。
+do wait(1.0)
+do Sound.play_music(World.current_level.HEART_BEAT_LOOP)
+do Interface.player.show_picture("CG45")
+do Interface.transition.fade_out(1.0)
+#(早苗の膣内の襞が多数映っているCGを表示)
+It: しかし落下してきた今の縮小男の視界には[wait=1][color=red][b]自分よりも巨大な襞が各々1匹の生き物かのように蠢いており、[wait=1]まるで化け物だらけの洞窟のようだった。[/b][/color]
+It: 天国なんてものは程遠い……[wait=1][b]男にとっては地獄そのものだった。[/b]
+It: 何本もの巨大な襞は、[b][wave amp=25 freq=5]「ぐちょり…」「ぐちゃり…」[/wave][/b]と不快な音を出しながら男を取り込もうとする。
+Me: [font_size=24]ひいいぃ！！[wait=0.5]い、[wait=0.5]嫌だ！！[wait=1.0]お願いだ、[wait=1.0][shake rate=20 level=10]助けてくれええ！！[/shake][/font_size]
+do wait(1.0)
+It: 男は必死に叫んだ。[wait=2]しかし、[wait=0.5]その男の助けを求める声は空しく、闇の中に吸い込まれていった。
+It: 男はなんとか脱出を試みようとしたが、[wait=1]どんどん縮小していく男の身体がそれを許さなかった。
+Me: [font_size=12]……！！[/font_size][wait=2][font_size=7]………………！！！[/font_size]
+It: もはや[b]膣内の細菌と化した男は[/b]声かどうかも分からないものを発しながら、[wait=1]膣内の鼓動と襞によって奥へ奥へと誘われていった。
+do! Sound.stop_music(3)
+#(ゆっくりと画面を真っ暗にする)
+do wait(2.0)
+do Interface.player.show_picture("CG55")
+#(早苗さん視点のCGを表示する)
+Sanae: [font_size=60]おかしいな…[wait=1]さっきまで変な感じしてたんですけど…[/font_size]
+Sanae: [font_size=60]もしかして…[wait=1]溜まっているのでしょうか…？[wait=1]確かに最近忙しくてご無沙汰だったのはありますけど……[/font_size]
+Sanae: [font_size=60]……折角誰もおりませんし、[color=#FFFFFF70]少しだけしちゃうのもありかもしれませんね……[/color][/font_size]
+do wait(2.0)
+do! Interface.transition.fade_in(2.0)
+#(画面を真っ暗にする)
+Sanae: [color=pink]んっ……[wait=0.5]あっ……[/color]
+do Sound.play_sound(Sound.EVENT_SOUND.CUM_DEEP)
+do wait(1.0)
+do Interface.player.show_picture("CG47")
+do! Interface.transition.fade_out(1.0)
+It: 男は早苗との赤ちゃんを作りたいという欲望のために、[wait=1][color=red][b]際限無く縮小し早苗の卵子に身体ごと吸収された。[/b][/color]
+It: 違和感の原因だったものが[wait=0.5]今頃将来の子供を製造するための材料になっているなんて[wait=0.5]早苗は知る由も無かった。
+do World.game_over_level()
+=> END

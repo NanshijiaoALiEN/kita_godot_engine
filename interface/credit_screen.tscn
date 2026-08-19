@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://btw2x3mtynb23"]
+
+[ext_resource type="Script" uid="uid://bp2ayeu5ximt4" path="res://interface/credit_screen.gd" id="1_credit"]
+[ext_resource type="Theme" uid="uid://cq7rh3aso81ck" path="res://interface/theme.tres" id="2_theme"]
+
+[node name="CreditScreen" type="Control" unique_id=565506238]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_credit")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=782275100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=1567893983]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -253.0
+offset_right = 300.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=306910964]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 32
+
+[node name="Credits" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=542134463]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="TitleLabel" type="Label" parent="Panel/MarginContainer/Credits" unique_id=1898164488]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "クレジット"
+horizontal_alignment = 1
+
+[node name="Story" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=289837596]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Story" unique_id=937262129]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
+theme_override_font_sizes/font_size = 18
+text = "オリジナル & テキスト"
+horizontal_alignment = 1
+
+[node name="CityName" type="LinkButton" parent="Panel/MarginContainer/Credits/Story" unique_id=17033272]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Peacher"
+uri = "https://x.com/TI_Peacher"
+
+[node name="Code" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=298236959]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Code" unique_id=1170004307]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
+theme_override_font_sizes/font_size = 18
+text = "プログラム & グラフィック"
+horizontal_alignment = 1
+
+[node name="TextName" type="LinkButton" parent="Panel/MarginContainer/Credits/Code" unique_id=1744244263]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Kitamiya"
+uri = "https://x.com/kitanatsu_"
+
+[node name="Sound" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=1616896022]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Sound" unique_id=1422648478]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
+theme_override_font_sizes/font_size = 18
+text = "サウンド"
+horizontal_alignment = 1
+
+[node name="SoundName" type="LinkButton" parent="Panel/MarginContainer/Credits/Sound" unique_id=1586386112]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Pecu"
+uri = "https://x.com/PeculiarMGTS"
+
+[node name="Assets" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=825230311]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Assets" unique_id=2100258849]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
+theme_override_font_sizes/font_size = 18
+text = "素材"
+horizontal_alignment = 1
+
+[node name="AssetsName" type="LinkButton" parent="Panel/MarginContainer/Credits/Assets" unique_id=1435137036]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Salome"
+
+[node name="BackButton" type="Button" parent="Panel/MarginContainer/Credits" unique_id=242717582]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "戻る"

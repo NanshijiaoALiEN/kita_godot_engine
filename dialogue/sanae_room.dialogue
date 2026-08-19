@@ -1,0 +1,215 @@
+~ after_shink
+# 視界が再び回復すると、目の前には広大な世界が広がり、周囲には雲を突くような建築物が見える。俺は埃サイズに縮小されていることに気づく
+It: 目の前の強光が消え去った時、[wait=0.5]強烈な [b]無重力感[/b] に襲われ、[wait=0.5]俺はまるで遥か上空から転落し、硬い地面に叩きつけられたような感覚に陥っていた。
+do World.player.show_balloon("annoyed")
+Me: [wave amp=25 freq=5]うぅ……[/wave][wait=0.5]頭がくらくらする……ここはどこだ？[wait=0.5]
+It: 頭痛を訴えながらも、その耳で感じた周囲の音は重苦しく聞こえ、俺の身体に負荷をかけるようだった。
+
+do Interface.player.show_picture("CG9", 1.0, Interface.player.POSITION.DOWN)
+do wait(2.0)
+do Interface.player.move_to_top("CG9", 6.0)
+It: 暫くして頭痛が治まり、[wait=0.5]視力が回復したところで恐る恐る目を開けると[wait=0.5]視界の先には巨大な溝が刻まれた [b]赤木の大荒野[/b] が広がっていた。空気中に漂う塵は、まるで巨大な岩石のように身の回りを飛び交っている。
+It: 目の前に広がる世界は、[wait=0.5]明らかに異常な光景だとすぐに分かった。
+Me: [wave amp=25 freq=5]な……なんだここは……？[/wave]
+It: 俺は顔を上げて周囲を見渡してく。[wait=0.5]周囲には聳え立つ建物らしきものや断崖が広がっていた。
+It: 更に顔を上に向けると、自分でも見たことあるような形の物体であることに気づく。[wait=0.5]しかし、気づいた時は恐怖が氷のような冷たい波となって自分の心を瞬時に包み込んでいった。
+Me: あの雲を突くような円柱……[wait=0.5]まさか机の脚か？[wait=0.5]という事はこの赤木の地面は……[wait=1]板張りの床なのか……！？[wait=0.5]という事はあっちの断崖のような壁は……
+Me: ……嘘だろ？[wait=1.0]俺が縮んでるというのか？[wait=0.5]つまり今の俺は [color=yellow][b]そこらへんの埃[/b] みたいに小さくなってるのか！？[/color]
+Me: つまり俺はこのまま小さな虫に引き裂かれたり、[wait=0.5]あの宙に浮いている塵に飲み込まれて死ぬというのか……？
+do! Interface.player.remove_picture("CG9", 2)
+Me: [pulse freq=1.0 color=#ffffff60 ease=-2.0]そんな……[/pulse][wait=0.5]た、助けてくれ……[wait=1.0][b]お願いだ！[shake rate=20 level=10]誰か助けてくれ！[/shake][/b]
+do wait(1.0)
+do! Sound.play_sound(Sound.EVENT_SOUND.BOOM_1)
+do World.camera.camera_shake(1.0, 2.0)
+# 巨大な地震が伝わり、足元がふらつく。振り返ると、巨大な草履が目の前に踏み下ろされる
+It: [shake rate=20 level=10][font_size=36][b]ゴゴゴゴゴ！！！[/b][/font_size][/shake]
+do wait(2.0)
+do Sound.play_music(World.current_level.level_music)
+It: 突如響いたその轟音は、助けを求める俺に応えるように地平線の彼方から炸裂した。
+It: 床が一瞬にして崩壊せんばかりの悲鳴を上げ、劇的な振動が矮小な主人公を宙へと跳ね飛ばす。
+It: 突然、世界が激しく震え出した。雷鳴よりも重く、魂まで砕きそうな轟音が響く。それはまるで[wait=0.5]神罰が下され世界を破滅に追い込むような……そのような感じだった。
+Me: [font_size=32][shake rate=20 level=10]うわああああ！！！[/shake][/font_size][wait=0.5]床が海のように波打って、体が宙に投げ出されてしまう！[wait=0.5]な、なにが起こっているんだよ！
+It: 身体が投げ出されてしまう状態でなんとか上空見上げると
+do Interface.player.show_picture("CG10")
+It: そこには黒影が空を[wait=0.5]そして視界を覆いつくしながらこちらに向かって降ってきていた……！
+It: その黒影が、破竹の勢いでダウンバーストを生成しながら重く振り下ろされる。[wait=0.5]気圧は極限まで圧縮され、巻き起こる突風が床の屑を巻き上げ、主人公を絶望の縁へと追いやる。
+do World.current_level.shadow.show()
+do wait(0.5)
+do Interface.player.remove_picture("CG10", 0.1)
+do! Sound.play_sound(Sound.EVENT_SOUND.BOOM_2)
+do World.camera.camera_shake(1.0, 2.0)
+Me: [b]ドンッ！[/b] 地平線を覆いつくす茶色の壁が、俺の体のすぐ数ミリ隣に聳え立った。凄まじい風圧で、脆い体が引き裂かれそうになった。
+Me: お、俺は生きているのか……？
+It: 正直、生きている心地はまるでしなかった。急になにかが降ってきたと思うと目の前にはいきなり茶色の壁が生成されて何がなんやら分からない状態だった。
+It: 俺は床の木目の溝にしがみつき、全身の震えが止まらない。
+Me: な、なんなんだよ……この茶色の壁は……
+do wait(1.0)
+
+# 上を見上げ、俺がずっと恋焦がれていた早苗女神であることに愕然と気づく
+It: 主人公は震えながら顔を上げ、茶色の壁を見上げた。
+do Interface.player.show_picture("CG11")
+do wait(1.0)
+do Interface.player.move_to_top("CG11", 8.0)
+It: その茶色の壁の先には、光が当たると美しく光る二本の二本の [b]神聖な支柱[/b] が聳え立ち、[wait=1]その上で空を遮るほどに広がる緑と白のオーロラが広がっていた。
+It: その異常気象のような光景は初めて見るはずなのに[wait=0.5]何故か何度も見た覚えがあった。
+It: それは、[wait=0.5]俺が人里で何度も見た[b]東風谷早苗[/b]の特徴そのものだった。
+It: そう……[wait=1]目の前にはとんでもなく巨大な東風谷早苗が立っていたのであった。 
+#（鼓動が激しく破裂しそうだ。俺はゆっくりと顔を上げる）
+Me: もしかして、この茶色の壁は……[wait=0.5]草履の靴底という事なのか……？
+Me: そして、この聳え立つ肌色の支柱は足……その上の雄大に映っているのは緑……
+Me: そしてここからでもはっきりと見える幾重にも重なる巨大な波……[wait=0.5]あれはスカートなんだろう……
+do Interface.player.remove_all_picture()
+do World.switch_level(World.ESCAPE_SANAE)
+=> END
+
+~ escape_sanae
+if Global.escape_sanae:
+	do World.switch_level(World.SANAE_FLOOR)
+	do wait(0.05)
+	=> END
+# 危険を察知した俺はパニックになって走り去る
+It: [shake rate=20 level=10][b]ズゴゴゴゴゴゴ！！！[/b][/shake]
+do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+It: 足元を掬われる揺れが俺を絶え間なく襲い続ける。あの規格外の東風谷早苗が身じろぎをしているのだろう。
+do wait(0.5)
+It: しかし、俺の中の恐怖感はこの瞬間、凝固し、次いで狂おしいほどの喜悦へと取って代わった。
+Me: な……[wait=1]なんて素晴らしいんだ！この建物より遥か巨大な早苗様を独り占めできるなんて夢みたいだ！
+Me: 早苗様は俺の存在に全く気づいていない。俺は今早苗様の足元にいて、早苗様が動くたびに体温と同じ温度の暖かい風が感じられるほど近くにいるんだ！
+Me: はは……[wait=0.5]ははははは！[wait=0.5]夢が叶ったぞ！いつ死んでもおかしくないが、ついに俺は [b]埃[/b] の視点で、遠慮なく彼女のすべてを覗き見ることができるんだ！
+Me: これこそが俺の望んでいたもの……[wait=0.5]これこそが、変態みたいに体験したかった [b]究極の私生活[/b] なんだ！
+do World.switch_level(World.SANAE_FLOOR)
+set Global.escape_sanae = true
+=> END
+
+# 主人公が早苗の草履に近づこうとするが、早苗が無意識に動いて踏み潰される
+~ sandal_crush
+It: 主人公の瞳には、もはや恐怖の色はなかった。そこにあるのは、獲物を前にした獣のような、あるいは神を仰ぐ狂信者のような歪んだ欲望だけだった。
+Me: これだ……この距離こそが俺の求めていたもの！[wait=0.5]もっと近くへ……早苗様の温もりを、その神聖な重圧を全身で感じたいんだ！
+It: 理性を焼き尽くした彼は、彼女に向かってどんどん足を踏み入れていく。ずっとずっと好きだった彼女の全身にいち早く触れたいがために……
+It: しかし、[wait=0.5]それは一瞬の出来事だった。
+It: [font_size=48][color=red][b]グシャッ……！！！[/b][/color][/font_size]
+do Interface.player.show_picture("CG28", 2.0)
+It: 早苗が何気なく重心を移したその一動が、矮小な存在にとっては宇宙の崩壊に等しかった。[wait=0.5]逃げる間もなく、何トンもの質量が上空から容赦なく叩きつけられる。
+It: 彼が最後に見て、そして感じたのは[wait=0.5]彼女の白い足首が優雅に弧を描く残像と……[wait=1]絶頂にも似た、凄まじい圧潰の快感だった……
+It: 彼はこれから大好きな神様の草履の一部としてその身体を貢いでいくのであった。
+do World.game_over_level()
+=> END
+
+# 主人公は早苗から離れることを選び、部屋の隅で穴を見つけて中に入る
+~ enter_hole
+if Global.has_entered_cave:
+	do World.switch_level(World.SANAE_SANDAL, "start")
+	=> END
+
+It: 彼は理性を繋ぎ止め、巨神の足元から必死に逃げ出した。床の広大な溝を飛び越え、巨大な塵の嵐を潜り抜けながら、部屋の隅へと走る。
+Me: いや、落ち着け……[wait=0.5]ここで見惚れて踏み潰されたら、これ以上の覗き見はできなくなる。
+Me: あそこだ！壁の継ぎ目に、俺の体なら通れそうなひび割れがある！
+It: それは人間にとっては掃除の際に見逃される程度の小さな穴だったが、今の彼にとっては未知の世界へ続く巨大な洞窟だった。
+It: 彼は迷わずその暗闇へと飛び込んだ。背後で床を揺らす凄まじい足音が、次第に遠ざかっていく。
+Me: はぁ……はぁ……[wait=0.5]何とか生き延びたぞ……。
+Me: （暗い穴の中から、外の広大な部屋を見つめる）ここは安全そうだ。ここなら、彼女に見つからずにずっと観察し続けられるかもしれない……。
+do World.switch_level(World.SPIDER_CAVE)
+=> END
+
+~ leave_spider_shop
+#穴を出た後、巨大な草履が降ってきてクモが居た穴が封鎖される
+Me: いやぁ、思わぬ収穫だな。[wait=0.5]蜘蛛があんなに優しくて探索に役に立ちそうなものまでくれるなんてな。
+Me: よし、これを使って色んなところから早苗さんを……！
+do Sound.stop_music(2)
+do wait(1.0)
+do! Sound.play_sound(Sound.EVENT_SOUND.RUMBLE)
+Me: [color=#FFFFFF60]な、[wait=0.5]なんだ……？[wait=0.5]急に暗く……[/color]
+do wait(2.0)
+do Interface.player.show_picture("CG29")
+It: 見上げるとそこには薄汚れた天井が降ってきていた。[wait=0.5]それはまるでギロチンを彷彿させるようだった。
+Me: な……[wait=0.5]なんだよあれ！？
+It: 俺は全速力で走った。[wait=0.5]何もかも分からなかったが、危険な状況という事は把握できていたから。
+do! Sound.play_sound(Sound.EVENT_SOUND.BOOM_1)
+do Interface.player.remove_picture("CG29", 0.1)
+# (巨大な草履が地面に着地する効果音)
+Me: ……[wait=1][wave amp=25 freq=5]俺は生きているのか？[/wave]
+do Interface.player.show_picture("CG35")
+It: 俺は轟音がした後ろを振り向く。[wait=0.5]そこには、茶色の壁が聳え立っていた。
+Me: この茶色の壁……[wait=1]さっき見たような……
+do wait(1.0)
+do! Sound.play_sound(Sound.EVENT_SOUND.DISTANT_BOOM_2)
+# (巨大な素足が地面に着地する効果音)
+It: また後ろから轟音がする。[wait=0.5]俺はおそるおそる振り返った。
+do Interface.player.remove_picture("CG35")
+do wait(2.0)
+do Interface.player.show_picture("CG25")
+do wait(2.0)
+do Interface.player.move_to_top("CG25", 6.0)
+Sanae: [font_size=48]やっぱ草履は蒸れるなぁ……[wait=0.5]やっぱ部屋ではは[b]素足[/b]に限りますね♪
+It: 遠くでは、肌色の支柱が揺れを起こしながら動いている。[wait=0.5]それを見た瞬間、この茶色の壁の正体が確信に変わった。
+Me: 間違いない……[wait=0.5]この茶色の壁は[b]早苗様の草履……[/b]
+It: そう、足の蒸れに耐えかねた彼女は草履を脱ぎ捨てたものだった。
+It: 彼女は気分がいいのか鼻歌を歌っている。[wait=1]地面では人生が終了することになっている人物がいるとは知らずに。
+do wait(2.0)
+It: 俺は、草履の壁の方向へ向き直す。[wait=0.5]その草履によって先程自分がいた穴が封鎖されている事に気づいた。
+Me: あいつは大丈夫だろうか……
+It: 知り合って間もなかったが、あの蜘蛛は自分に協力してくれたのは確かだ。
+It: 俺は蜘蛛の無事を祈りながらその場を後にするのであった。
+do Interface.player.remove_picture("CG25")
+set Global.has_entered_cave = true
+do wait(1.0)
+do World.switch_level(World.SANAE_SANDAL, "start")
+=> END
+
+~ inspect_sanae_sandal
+It: 目の前には早苗の草履という茶色の壁が聳え立っている。
+It: この草履の壁の向こう側には先程まで自分と対等の自分に手助けをしてくれた者が潜んでいた壁穴があったはずだった。
+Me: …[wait=0.5]あいつは無事だろうか。
+=> END
+
+
+~ to_close_up
+if Global.has_entered_cave:
+	if Global.first_barefeet_closeup:
+		do Interface.player.show_picture("CG57")
+		do wait(2.0)
+		do Interface.player.move_to_top("CG57", 6.0)
+		It: .......
+		do Interface.player.remove_picture("CG57")
+		set Global.first_barefeet_closeup = false
+		
+	do World.switch_level(World.SANAE_FLOOR_BAREFEET)
+	=> END
+	
+else:
+	do World.switch_level(World.SANAE_FLOOR)
+	=> END
+	
+	
+~ sanae_barefoot_event
+Me: (気づけば俺は、早苗様の素足に向かって走り出していた。)
+Me: (ずっと心の中で期待していた。[b]早苗様の足裏のシミになりたい。[/b]と。)
+Me: (今なら自分のこの欲望を叶えられる。そんな一心だった。)
+do wait(1.0)
+Me: (俺は天を見上げた。)
+Sanae: [font_size=48][wave amp=25 freq=5]ふんふんふ～ん♪[/wave]
+Me: (上空から心地のいい鼻歌がエコーを効かしながら降り注いでいる。)
+Me: (それと同時に草履という拘束具から解き放たれた素足が天に浮かびながら嬉しそうに動いていた。)
+Me: (自分より遥かに素足は空中でぷらぷら動かされ、足指もぐにぐにと動かされる。[wait=1]それだけで彼女の足の周りでは振動が起きているのだろう。)
+do wait(1.0)
+Me: (光に当たるその肌色の柱は、[wait=1]それはまるで宝石のようで俺はその光景に見惚れていた。)
+Me: (そしてその見惚れている俺を、[wait=1][b]彼女の足は見逃さなかった。[/b])
+do Interface.player.show_picture("CG56")
+#(足裏で覆いつくされているCGを表示＋効果音)
+Me: [color=red][b](こちらに向かって視界を全て覆いつくしながら薄汚れた足裏がどんどん近づいてくる。)[/b][/color]
+Me: (早苗様は、[wait=0.5][color=red][b]ただ足を地面に下ろすために足裏を地面に近づけているだけ。)[/b][/color]
+Me: (ただそれだけなのに[b]俺の周りが一瞬で夜が訪れ、[wait=1]空気を汗の臭いで充満させ、[wait=1]ダウンバーストによって地鳴りをあげ…[wait=1]まるでこの世の終わりが来たかのような感じだった。[/b])
+Me: (しかし、俺は逃げれなかった。[wait=1]いや……[wait=2][b]逃げようともしなかった。[/b])
+do! Interface.transition.fade_in(0.1)
+do Sound.play_sound(Sound.EVENT_SOUND.BOOM_1)
+do Sound.play_sound(Sound.EVENT_SOUND.SQUISH)
+#(潰される効果音を鳴らす)
+Me: (俺は早苗様の足裏によって痛みを感じる間も無く、踏み潰され早苗様の足裏にこべりついた。)
+Me: (でも凄く幸せだ。)
+Me: (これで晴れて早苗様の足裏のシミとなれて、[wait=1]どこでも傍にいれて早苗様の全部を全部堪能出来るんだから。)
+do wait(2.0)
+It: 男は、東風谷早苗に近づいた結果…[wait=1]彼女の素足に呆気なく踏み潰されてしまった。
+It: ただ、[wait=1]足裏にこべりついた男の表情は、凄く恍惚な表情を浮かべていたという。
+do wait(1.0)
+do World.game_over_level()
+=> END

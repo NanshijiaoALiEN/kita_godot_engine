@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://ccrirf4ms1mu7"]
+
+[ext_resource type="Script" uid="uid://x42l0fi24w1" path="res://interface/settings_menu.gd" id="1_settings"]
+[ext_resource type="Theme" uid="uid://cq7rh3aso81ck" path="res://interface/theme.tres" id="2_theme"]
+
+[node name="SettingsMenu" type="Control" unique_id=1413109799]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_settings")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2147430326]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=64612483]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -200.0
+offset_right = 260.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1131740836]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Menu" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1606579979]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="TitleLabel" type="Label" parent="Panel/MarginContainer/Menu" unique_id=1177663571]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "設定"
+horizontal_alignment = 1
+
+[node name="MasterLabel" type="Label" parent="Panel/MarginContainer/Menu" unique_id=1552419814]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="Panel/MarginContainer/Menu" unique_id=1863319565]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicLabel" type="Label" parent="Panel/MarginContainer/Menu" unique_id=1582976569]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="Panel/MarginContainer/Menu" unique_id=2107505993]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SoundLabel" type="Label" parent="Panel/MarginContainer/Menu" unique_id=685813396]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Sound"
+
+[node name="SoundSlider" type="HSlider" parent="Panel/MarginContainer/Menu" unique_id=1435182459]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="BackButton" type="Button" parent="Panel/MarginContainer/Menu" unique_id=1104123955]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "戻る"

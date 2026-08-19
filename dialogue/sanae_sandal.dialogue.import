@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dlxgjmt7ghdxm"
+path="res://.godot/imported/sanae_sandal.dialogue-82d0f6898678b226435a21669ccfa335.tres"
+
+[deps]
+
+source_file="res://dialogue/sanae_sandal.dialogue"
+dest_files=["res://.godot/imported/sanae_sandal.dialogue-82d0f6898678b226435a21669ccfa335.tres"]
+
+[params]
+
+defaults=true

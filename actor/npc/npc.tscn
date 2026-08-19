@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b2hf7djn4ox5b"]
+
+[ext_resource type="Script" uid="uid://c7m30cr0pd6wt" path="res://actor/npc/npc.gd" id="1_npfju"]
+[ext_resource type="Script" uid="uid://dvwrjwt8vgsjw" path="res://system/state_machine.gd" id="2_adu40"]
+[ext_resource type="SpriteFrames" uid="uid://di5wlix3b3n16" path="res://data/tile_resource/sprite/balloon.tres" id="2_ijhg5"]
+[ext_resource type="Script" uid="uid://bndn4r0s03e30" path="res://actor/npc/idle_state.gd" id="3_b6ab1"]
+[ext_resource type="Script" uid="uid://ba7tkacgs3fnc" path="res://actor/npc/nav_state.gd" id="4_m2p64"]
+[ext_resource type="Script" uid="uid://beh4rm8g1fsji" path="res://actor/npc/loop_nav_state.gd" id="5_lmdq5"]
+[ext_resource type="PackedScene" uid="uid://df7le3tg5xavf" path="res://actor/actor_sprite.tscn" id="6_dwgm2"]
+[ext_resource type="Script" uid="uid://d2881hqbf1rmj" path="res://actor/npc/dialogue_state.gd" id="7_e1u4g"]
+
+[node name="NPC" type="CharacterBody2D" unique_id=2002026526 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_npfju")
+sprite = NodePath("ActorSprite")
+
+[node name="Balloon" type="AnimatedSprite2D" parent="." unique_id=1836189257]
+visible = false
+texture_filter = 1
+position = Vector2(0, -50)
+sprite_frames = ExtResource("2_ijhg5")
+
+[node name="ActorSprite" parent="." unique_id=1335745103 instance=ExtResource("6_dwgm2")]
+
+[node name="StateMachine" type="Node" parent="." unique_id=532798020 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_adu40")
+initial_state = NodePath("IdleState")
+metadata/_custom_type_script = "uid://dvwrjwt8vgsjw"
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1896033238 node_paths=PackedStringArray("npc")]
+script = ExtResource("3_b6ab1")
+npc = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="NavState" type="Node" parent="StateMachine" unique_id=611072331 node_paths=PackedStringArray("npc", "nav_agent")]
+script = ExtResource("4_m2p64")
+npc = NodePath("../..")
+nav_agent = NodePath("../../NavigationAgent2D")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="LoopNavState" type="Node" parent="StateMachine" unique_id=515794807 node_paths=PackedStringArray("npc", "nav_agent")]
+script = ExtResource("5_lmdq5")
+npc = NodePath("../..")
+nav_agent = NodePath("../../NavigationAgent2D")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="DialogueState" type="Node" parent="StateMachine" unique_id=1400256402 node_paths=PackedStringArray("npc")]
+script = ExtResource("7_e1u4g")
+npc = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1964800328]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=399197257]
+
+[connection signal="go_idle_state" from="." to="StateMachine/LoopNavState" method="_on_npc_go_idle_state"]
+[connection signal="go_loop_nav_state" from="." to="StateMachine/IdleState" method="_on_npc_go_loop_nav_state"]
+[connection signal="go_nav_state" from="." to="StateMachine/IdleState" method="_on_npc_go_nav_state"]
+[connection signal="go_nav_state" from="." to="StateMachine/NavState" method="_on_npc_go_nav_state"]

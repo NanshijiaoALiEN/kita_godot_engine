@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dvyxfe8jsmde6"]
+
+[ext_resource type="Script" uid="uid://b2ycqk5m7q61x" path="res://interface/checkpoint_menu.gd" id="1_checkpoint_menu"]
+
+[node name="CheckpointMenu" type="Control" unique_id=338316801]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_checkpoint_menu")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1916309238]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="CenterContainer" unique_id=262767305]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 260)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=632346381]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 28
+
+[node name="Menu" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1990637950]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/Menu" unique_id=2012443800]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Checkpoint"
+horizontal_alignment = 1
+
+[node name="PreviewButton" type="Button" parent="CenterContainer/Panel/MarginContainer/Menu" unique_id=375849502]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Preview"
+
+[node name="TravelButton" type="Button" parent="CenterContainer/Panel/MarginContainer/Menu" unique_id=793311858]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Travel"
+
+[node name="GirlDataButton" type="Button" parent="CenterContainer/Panel/MarginContainer/Menu" unique_id=1266418768]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Girl Data"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/Panel/MarginContainer/Menu" unique_id=476434380]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Close"
+
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/Menu/PreviewButton" to="." method="_on_preview_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/Menu/TravelButton" to="." method="_on_travel_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/Menu/GirlDataButton" to="." method="_on_girl_data_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/Menu/CloseButton" to="." method="_on_close_button_pressed"]

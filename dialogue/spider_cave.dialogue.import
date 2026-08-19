@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://eoo4i0fnpppr"
+path="res://.godot/imported/spider_cave.dialogue-e25bbfe0c845f1398fca33dce25acde2.tres"
+
+[deps]
+
+source_file="res://dialogue/spider_cave.dialogue"
+dest_files=["res://.godot/imported/spider_cave.dialogue-e25bbfe0c845f1398fca33dce25acde2.tres"]
+
+[params]
+
+defaults=true

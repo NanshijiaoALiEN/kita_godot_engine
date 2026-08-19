@@ -1,0 +1,206 @@
+[gd_scene format=3 uid="uid://dhiqxv20qome5"]
+
+[ext_resource type="Script" uid="uid://dispq5peq5epq" path="res://interface/player_ui.gd" id="1_playerui"]
+[ext_resource type="Theme" uid="uid://cq7rh3aso81ck" path="res://interface/theme.tres" id="2_theme"]
+[ext_resource type="FontFile" uid="uid://bkiapb5a53y1c" path="res://data/font/noto_sans_mono/NotoSansMono-SemiBold.ttf" id="3_7jhck"]
+[ext_resource type="FontFile" uid="uid://daa0u1tiqidf2" path="res://data/font/noto_sans_mono/NotoSansMono-Regular.ttf" id="3_70n32"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aasth"]
+content_margin_left = 24.0
+content_margin_top = 18.0
+content_margin_right = 24.0
+content_margin_bottom = 18.0
+bg_color = Color(0.019599998, 0.038919993, 0.07, 0.78431374)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 14
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jhck"]
+bg_color = Color(0.06, 0.06, 0.06, 0.92156863)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.141176, 0.321569, 0.501961, 0.78)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wguc7"]
+bg_color = Color(0.98825055, 0.4219743, 0.51388127, 0.9490196)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16fqb"]
+bg_color = Color(0.06, 0.06, 0.06, 0.92156863)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.141176, 0.321569, 0.501961, 0.78)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70n32"]
+bg_color = Color(0.88, 0.67144, 0.18479998, 0.9490196)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_size_placeholder"]
+bg_color = Color(0.06, 0.06, 0.06, 0.92156863)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.141176, 0.321569, 0.501961, 0.78)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="PlayerUI" type="Control" unique_id=402128110]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_playerui")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1202114070]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 22.0
+offset_right = 575.0
+offset_bottom = 106.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_aasth")
+
+[node name="Stats" type="VBoxContainer" parent="PanelContainer" unique_id=1284163576]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="HealthRow" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=372657769]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="HealthBar" type="ProgressBar" parent="PanelContainer/Stats/HealthRow" unique_id=1681796863]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 30)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_7jhck")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wguc7")
+max_value = 1000.0
+value = 1000.0
+show_percentage = false
+
+[node name="HealthValueLabel" type="Label" parent="PanelContainer/Stats/HealthRow" unique_id=1957449753]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98825055, 0.4219743, 0.51388127, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_7jhck")
+theme_override_font_sizes/font_size = 20
+text = "1000 / 1000"
+vertical_alignment = 1
+
+[node name="StaminaRow" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=213329692]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="StaminaBar" type="ProgressBar" parent="PanelContainer/Stats/StaminaRow" unique_id=473257769]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 30)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_16fqb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_70n32")
+max_value = 10000.0
+value = 10000.0
+show_percentage = false
+
+[node name="StaminaValueLabel" type="Label" parent="PanelContainer/Stats/StaminaRow" unique_id=1002457033]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.67144, 0.18479998, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_7jhck")
+theme_override_font_sizes/font_size = 20
+text = "10000 / 10000"
+vertical_alignment = 1
+
+[node name="CurrentSizeIndicator" type="VBoxContainer" parent="." unique_id=307816336]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -146.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = 166.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="CurrentSizeSprite" type="TextureRect" parent="CurrentSizeIndicator" unique_id=1587572941]
+custom_minimum_size = Vector2(116, 100)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlaceholderPanel" type="Panel" parent="CurrentSizeIndicator/CurrentSizeSprite" unique_id=168407615]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_size_placeholder")
+
+[node name="PlaceholderLabel" type="Label" parent="CurrentSizeIndicator/CurrentSizeSprite/PlaceholderPanel" unique_id=732082082]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.55, 0.72, 0.88, 0.9)
+theme_override_fonts/font = ExtResource("3_70n32")
+theme_override_font_sizes/font_size = 28
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentSizeLabel" type="Label" parent="CurrentSizeIndicator" unique_id=2024801146]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.86, 0.92, 1)
+theme_override_fonts/font = ExtResource("3_70n32")
+theme_override_font_sizes/font_size = 12
+text = "Current Size"
+horizontal_alignment = 1

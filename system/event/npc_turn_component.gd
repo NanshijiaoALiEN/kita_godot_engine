@@ -1,0 +1,2 @@
+extends EventComponent
+class_name NpcTurnComponent

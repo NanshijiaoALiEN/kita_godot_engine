@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dqix64vb0w07b"]
+
+[ext_resource type="Script" uid="uid://d1bn4o1do2tei" path="res://level/game_over.gd" id="1_6oph7"]
+[ext_resource type="Resource" uid="uid://bf4wupsmsnv30" path="res://dialogue/sanae_room.dialogue" id="2_5qf82"]
+[ext_resource type="AudioStream" uid="uid://lkdxtdost714" path="res://data/music/PerituneMaterial_Hanagoyomi2_Piano.mp3" id="3_8ac1r"]
+[ext_resource type="PackedScene" uid="uid://cmuxccn2iafcu" path="res://actor/player/player.tscn" id="3_cx0lt"]
+[ext_resource type="PackedScene" uid="uid://db33tf25kgigj" path="res://actor/camera/main_camera.tscn" id="4_8ac1r"]
+[ext_resource type="Script" uid="uid://cu5vr1wimfbob" path="res://system/spawn_point_group.gd" id="5_p2rqr"]
+[ext_resource type="Script" uid="uid://c837rcoov2jps" path="res://system/spawn_point.gd" id="6_flhps"]
+[ext_resource type="Theme" uid="uid://cq7rh3aso81ck" path="res://interface/theme.tres" id="7_5qf82"]
+
+[node name="GameOver" type="Node2D" unique_id=154151489]
+script = ExtResource("1_6oph7")
+dialogue = ExtResource("2_5qf82")
+title = "after_shink"
+level_music = ExtResource("3_8ac1r")
+metadata/_custom_type_script = "uid://br1fyfsiw5ehl"
+
+[node name="Player" parent="." unique_id=974654855 instance=ExtResource("3_cx0lt")]
+visible = false
+
+[node name="MainCamera" parent="." unique_id=1139513995 instance=ExtResource("4_8ac1r")]
+
+[node name="SpawnPointGroup" type="Node" parent="." unique_id=1890105795]
+script = ExtResource("5_p2rqr")
+metadata/_custom_type_script = "uid://cu5vr1wimfbob"
+
+[node name="Start" type="Marker2D" parent="SpawnPointGroup" unique_id=1867068218]
+script = ExtResource("6_flhps")
+metadata/_custom_type_script = "uid://c837rcoov2jps"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1294766476]
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer" unique_id=1975690768]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = -16.5
+offset_right = 60.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_5qf82")
+theme_override_font_sizes/font_size = 96
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1

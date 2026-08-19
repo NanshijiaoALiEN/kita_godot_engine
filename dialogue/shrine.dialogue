@@ -1,0 +1,67 @@
+~ shrine_encounter
+if Global.shrine_encounter:
+	do World.camera.camera_zoom(3.0, 1.0)
+	=> END
+
+# 商人から鏡を貰い、守矢神社に到着後
+Me: はぁ……はぁ……[wait=0.5]ここまで辿り着くのに険しい道だったな……[wait=1]途中で狼に追われるし、大変だった……。
+do wait(1.0)
+do World.player.show_balloon("default")
+Me: お？[wait=0.5]あれは……
+do World.player.go_nav(World.current_level.goal)
+do World.player.set_direction(World.player.Direction.UP)
+do World.camera.camera_move(World.current_level.focus_point, 3.0)
+do wait(1.0)
+# (石像の影に隠れる)
+do World.current_level.sanae.show_balloon("sweat")
+Sanae: ふぅ……[wait=0.5]今日も演説疲れました。[wait=0.5]流石にこうやって毎日続けていると、疲れも溜まってきますね……。
+Sanae: しかし、こうやって演説を続けていれば[wait=0.5]きっと守矢神社に信仰が増えていく事も叶うはずです……！
+Sanae: 守矢神社の発展のために頑張らないと！
+# (早苗さんが辺りを見渡しながら)
+Sanae: 今日は神奈子様も諏訪子様もいらっしゃらないので、私一人なわけですが……[wait=1]なんだかいつもと違う雰囲気がしますね。
+Sanae: ……[wait=1]折角ですし、今からゆっくり休憩しましょう♪[wait=0.5]少しくらい羽目を外してもいいですよね！
+do World.current_level.sanae.go_nav(World.current_level.sanae_goal)
+do wait(0.5)
+do World.camera.camera_move(World.player, 3.0)
+do wait(1.0)
+do World.current_level.remove_sanae()
+Me: あれは早苗様！[wait=1]という事は、無事に守矢神社に到着できたみたいだな。
+Me: さて……[wait=0.5]あいつから貰ったこの鏡……[wait=1]一体どういう風に使うのだろうか？
+Me: やはり鏡だから、[b]神社を鏡に映し出せ[/b]ば何か起きたりするのだろうか？
+Me: とりあえず、[wait=0.5]神社が映る位置まで行くとするか。
+do World.camera.camera_zoom(3.0, 1.0)
+do World.camera.camera_follow()
+do World.current_level.active_mirror.show()
+set Global.shrine_encounter = true
+=> END
+
+~ active_mirror
+# 神社の前に向かい、鏡で神社を映す
+Me: この辺なら鏡に神社の全体が映し出すことが出来そうだな。
+It: [b]不思議な鏡を使いますか？[/b]
+- はい
+	#「はい」を選択後
+	It: [color=yellow]不思議な鏡を守矢神社を映すようにかがげた！[/color]
+	do wait(2.0)
+	do World.player.show_balloon("question")
+	It: 不思議な鏡は守矢神社を映し出すと[wait=0.5]まばゆい光を放ちだした。
+	It: そのまばゆい光は、[wait=1]暫くすると消えてしまった。
+	do wait(1.5)
+	do World.player.show_balloon("speechless")
+	Me: [speed=0.25]......[wait=1]？[wait=0.5]
+	Me: 何も起こらないじゃないか！
+	Me: まさか俺は騙されたのか？[wait=1][b]くそっ！[/b][wait=0.5]何が欲望を叶える鏡だよ！
+	do wait(2.0)
+	do Sound.change_volume(0.1, 1.5)
+	Me: あれ？[wait=1]俺の顔が鏡に映らないぞ？
+	Me: それに映っているのは……[wait=1][b]どこかの台所か？[/b]
+	do World.current_level.show_flashlight()
+	# (画面がホワイトアウトする)
+	Me: な、なんだ！？[wait=1]急に鏡が光だして……！
+	do! Sound.play_sound(Sound.EVENT_SOUND.TELEPORT)
+	do Sound.stop_music(2)
+	do World.switch_level(World.current_level.AFTER_SHRINKING)
+	=> END
+- いいえ
+	do wait(0.01)
+	=> END

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cce3anu42kunc"]
+
+[ext_resource type="Script" uid="uid://gy0iwdbknrah" path="res://level/level_data.gd" id="1_6fsvd"]
+
+[resource]
+script = ExtResource("1_6fsvd")
+level_name = "Game Over"
+level_path = "uid://dqix64vb0w07b"
+metadata/_custom_type_script = "uid://gy0iwdbknrah"

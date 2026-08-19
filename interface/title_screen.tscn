@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://dpx0olinot2x5"]
+
+[ext_resource type="Script" uid="uid://4o2bgxmk7ovu" path="res://interface/title_screen.gd" id="1_biv5p"]
+[ext_resource type="PackedScene" uid="uid://ccrirf4ms1mu7" path="res://interface/settings_menu.tscn" id="2_settings"]
+[ext_resource type="FontFile" uid="uid://cd78vof0q2men" path="res://data/font/noto_serif/NotoSerifTC-Bold.ttf" id="3_t7kxc"]
+[ext_resource type="Theme" uid="uid://cq7rh3aso81ck" path="res://interface/theme.tres" id="3_theme"]
+[ext_resource type="Texture2D" uid="uid://dod7iro0rnpii" path="res://picture/CG_MENU.png" id="3_tmsxh"]
+[ext_resource type="PackedScene" uid="uid://dnk5vetn12qp2" path="res://interface/save_slot_menu.tscn" id="6_save_slots"]
+[ext_resource type="PackedScene" uid="uid://btw2x3mtynb23" path="res://interface/credit_screen.tscn" id="7_credits"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t6ocp"]
+load_path = "res://.godot/imported/CG_MENU_2.png-800da2c91fe38b6c55652122400b3657.ctex"
+
+[sub_resource type="Gradient" id="Gradient_tmsxh"]
+offsets = PackedFloat32Array(0.04915912, 1)
+colors = PackedColorArray(0, 0, 0, 0.8627451, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4kxuq"]
+gradient = SubResource("Gradient_tmsxh")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="TitleScreen" type="Control" unique_id=1992689744]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_theme")
+script = ExtResource("1_biv5p")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1819462413]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.035, 0.045, 1)
+
+[node name="TitleScreen" type="TextureRect" parent="." unique_id=1718338139]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tmsxh")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TitleScreen2" type="TextureRect" parent="." unique_id=2095199987]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_t6ocp")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Gradient" type="TextureRect" parent="." unique_id=780880445]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 647.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_4kxuq")
+
+[node name="MainMenu" type="VBoxContainer" parent="." unique_id=227642448]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 111.0
+offset_top = 811.0
+offset_right = 604.0
+offset_bottom = 939.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MainMenu" unique_id=471672108]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t7kxc")
+theme_override_font_sizes/font_size = 64
+text = "KITA GODOT ENGINE"
+
+[node name="TitleLabel2" type="Label" parent="MainMenu" unique_id=1416471216]
+modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t7kxc")
+theme_override_font_sizes/font_size = 24
+text = "Made by Kitamiya"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=237180626]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = -140.0
+offset_right = 1064.0
+offset_bottom = -53.0
+grow_vertical = 0
+
+[node name="NewGameButton" type="Button" parent="HBoxContainer" unique_id=1114587971]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 72)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Start"
+alignment = 0
+
+[node name="ContinueButton" type="Button" parent="HBoxContainer" unique_id=973678514]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 72)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Load"
+alignment = 0
+
+[node name="SettingsButton" type="Button" parent="HBoxContainer" unique_id=1642588425]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 72)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Setting"
+alignment = 0
+
+[node name="CreditButton" type="Button" parent="HBoxContainer" unique_id=826926959]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 72)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Credit"
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="HBoxContainer" unique_id=1264874182]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 72)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+alignment = 0
+
+[node name="SettingsMenu" parent="." unique_id=1920906052 instance=ExtResource("2_settings")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+theme = null
+
+[node name="SaveSlotMenu" parent="." unique_id=2030534047 instance=ExtResource("6_save_slots")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="CreditScreen" parent="." unique_id=930468782 instance=ExtResource("7_credits")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+theme = null
+
+[connection signal="pressed" from="HBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

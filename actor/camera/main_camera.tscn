@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://db33tf25kgigj"]
+
+[ext_resource type="Script" uid="uid://cxkttembcrmgb" path="res://actor/camera/main_camera.gd" id="1_hw8gg"]
+[ext_resource type="Script" uid="uid://crccgxk7wuml2" path="res://actor/camera/camera_limit.gd" id="2_102m8"]
+[ext_resource type="Script" uid="uid://dvwrjwt8vgsjw" path="res://system/state_machine.gd" id="2_gbxpw"]
+[ext_resource type="Script" uid="uid://bp1egfn8xr1j0" path="res://actor/camera/idle_state.gd" id="3_oapd8"]
+[ext_resource type="Script" uid="uid://iofns17im0n" path="res://actor/camera/follow_state.gd" id="4_oapd8"]
+[ext_resource type="Script" uid="uid://bgy1g3eakm01" path="res://actor/camera/move_state.gd" id="5_102m8"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oapd8"]
+frequency = 0.015
+
+[node name="MainCamera" type="Camera2D" unique_id=1139513995 node_paths=PackedStringArray("top_right_marker", "bottom_left_marker")]
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+script = ExtResource("1_hw8gg")
+noise = SubResource("FastNoiseLite_oapd8")
+top_right_marker = NodePath("CameraLimit/TopRightMarker")
+bottom_left_marker = NodePath("CameraLimit/BottomLeftMarker")
+
+[node name="CameraLimit" type="Node" parent="." unique_id=703208223]
+script = ExtResource("2_102m8")
+
+[node name="TopRightMarker" type="Marker2D" parent="CameraLimit" unique_id=1131965357]
+unique_name_in_owner = true
+
+[node name="BottomLeftMarker" type="Marker2D" parent="CameraLimit" unique_id=861526134]
+unique_name_in_owner = true
+
+[node name="StateMachine" type="Node" parent="." unique_id=1424547083 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_gbxpw")
+initial_state = NodePath("IdleState")
+metadata/_custom_type_script = "uid://dvwrjwt8vgsjw"
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1337483095 node_paths=PackedStringArray("camera")]
+script = ExtResource("3_oapd8")
+camera = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="FollowState" type="Node" parent="StateMachine" unique_id=57548738 node_paths=PackedStringArray("camera")]
+script = ExtResource("4_oapd8")
+camera = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[node name="MoveState" type="Node" parent="StateMachine" unique_id=1889206640 node_paths=PackedStringArray("camera")]
+script = ExtResource("5_102m8")
+camera = NodePath("../..")
+metadata/_custom_type_script = "uid://dvxq85r82hqgr"
+
+[connection signal="on_camera_follow" from="." to="StateMachine/IdleState" method="_on_main_camera_on_camera_follow"]
+[connection signal="on_camera_follow" from="." to="StateMachine/MoveState" method="_on_main_camera_on_camera_follow"]
+[connection signal="on_camera_move" from="." to="StateMachine/FollowState" method="_on_main_camera_on_camera_move"]

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b2117tr3gjyy4"
+path="res://.godot/imported/sanae_hair.dialogue-61cc281853a62c9775cfbd26845c336b.tres"
+
+[deps]
+
+source_file="res://dialogue/sanae_hair.dialogue"
+dest_files=["res://.godot/imported/sanae_hair.dialogue-61cc281853a62c9775cfbd26845c336b.tres"]
+
+[params]
+
+defaults=true

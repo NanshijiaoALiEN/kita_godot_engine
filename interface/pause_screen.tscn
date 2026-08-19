@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://h0elbv5gkn2r"]
+
+[ext_resource type="Script" uid="uid://d1iqfmmto8buj" path="res://interface/pause_screen.gd" id="1_dlw7u"]
+[ext_resource type="PackedScene" uid="uid://ccrirf4ms1mu7" path="res://interface/settings_menu.tscn" id="2_settings"]
+[ext_resource type="Theme" uid="uid://cq7rh3aso81ck" path="res://interface/theme.tres" id="3_theme"]
+[ext_resource type="FontFile" uid="uid://cgqpbaoqveben" path="res://data/font/noto_serif_jp/NotoSerifJP-SemiBold.ttf" id="3_wrwo0"]
+[ext_resource type="PackedScene" uid="uid://dnk5vetn12qp2" path="res://interface/save_slot_menu.tscn" id="5_save_slots"]
+
+[node name="PauseScreen" type="Control" unique_id=1393484392]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_theme")
+script = ExtResource("1_dlw7u")
+
+[node name="Background" type="ColorRect" parent="." unique_id=486806076]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1953686196]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="VBoxContainer" parent="CenterContainer" unique_id=552303721]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/MainMenu" unique_id=441144569]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wrwo0")
+theme_override_font_sizes/font_size = 48
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="CenterContainer/MainMenu" unique_id=223984455]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "ゲームに戻る"
+
+[node name="SaveButton" type="Button" parent="CenterContainer/MainMenu" unique_id=1684131682]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "セーブ"
+
+[node name="LoadButton" type="Button" parent="CenterContainer/MainMenu" unique_id=1536152629]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "ロード"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/MainMenu" unique_id=1343858460]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "設定"
+
+[node name="TitleButton" type="Button" parent="CenterContainer/MainMenu" unique_id=732133677]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "タイトルへ"
+
+[node name="SettingsMenu" parent="." unique_id=1665925783 instance=ExtResource("2_settings")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="SaveSlotMenu" parent="." unique_id=1291500045 instance=ExtResource("5_save_slots")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="CenterContainer/MainMenu/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainMenu/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainMenu/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainMenu/TitleButton" to="." method="_on_title_button_pressed"]

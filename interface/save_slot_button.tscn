@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://0enh7awsnlwv"]
+
+[node name="SaveSlotButton" type="Button" unique_id=1544469368]
+custom_minimum_size = Vector2(0, 52)
+text = "スロット 1  --  00:00:00"
