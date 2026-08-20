@@ -13,16 +13,14 @@ enum EVENT_SOUND {
 	CONFIRM,
 	SELECT,
 	BACK,
-	BOOM_1
 }
 
 ## Audio streams indexed by EVENT_SOUND.
 var event_sounds:Array[AudioStream] = [
-	preload("res://data/sound/test_sound.tres"),
-	preload("res://data/sound/test_sound.tres"),
-	preload("res://data/sound/test_sound.tres"),
-	preload("res://data/sound/test_sound.tres"),
-	preload("res://data/sound/test_sound.tres"),
+	preload("res://data/sound/test_sound.ogg"),
+	preload("res://data/sound/confirm.ogg"),
+	preload("res://data/sound/confirm.ogg"),
+	preload("res://data/sound/back.ogg"),
 ]
 
 ## Replace the current music, optionally fading the old and new tracks.

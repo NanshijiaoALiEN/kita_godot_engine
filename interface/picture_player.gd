@@ -8,6 +8,9 @@ enum POSITION {
 	RIGHT
 }
 
+
+const PICTURES_DIR = "res://pictures"
+
 var _pictures: Dictionary[String, TextureRect] = {}
 
 
@@ -72,7 +75,7 @@ func _move_picture(picture_name: String, to_bottom: bool, duration: float) -> vo
 	return
 
 func _find_picture(picture_name: String) -> String:
-	var direct_path: String = "res://picture/%s" % picture_name
+	var direct_path: String = PICTURES_DIR + picture_name
 	if ResourceLoader.exists(direct_path):
 		return direct_path
 	for extension: String in ["png", "jpg", "jpeg", "webp"]:

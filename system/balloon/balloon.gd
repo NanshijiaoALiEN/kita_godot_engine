@@ -230,4 +230,4 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
 	type_sound.pitch_scale = randf_range(0.7, 1.3)
-	type_sound.play()
+	#type_sound.play()

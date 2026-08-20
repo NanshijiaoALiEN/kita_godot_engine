@@ -60,7 +60,7 @@ theme_override_constants/separation = 2
 
 [node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Credit1" unique_id=937262129]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
+theme_override_colors/font_color = Color(0.6162, 0.7527, 0.78, 1)
 theme_override_font_sizes/font_size = 18
 text = "Game"
 horizontal_alignment = 1
@@ -79,9 +79,9 @@ theme_override_constants/separation = 2
 
 [node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Credit2" unique_id=360922224]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
+theme_override_colors/font_color = Color(0.6162, 0.7527, 0.78, 1)
 theme_override_font_sizes/font_size = 18
-text = "Game"
+text = "Art"
 horizontal_alignment = 1
 
 [node name="Credit1Name" type="LinkButton" parent="Panel/MarginContainer/Credits/Credit2" unique_id=2062319306]
@@ -89,7 +89,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
 text = "Kitamiya"
-uri = "https://x.com/TI_Peacher"
+uri = "https://x.com/kitanatsu_"
 
 [node name="Credit3" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=1048650724]
 layout_mode = 2
@@ -97,9 +97,9 @@ theme_override_constants/separation = 2
 
 [node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Credit3" unique_id=1257103109]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
+theme_override_colors/font_color = Color(0.6162, 0.7527, 0.78, 1)
 theme_override_font_sizes/font_size = 18
-text = "Game"
+text = "Sound"
 horizontal_alignment = 1
 
 [node name="Credit1Name" type="LinkButton" parent="Panel/MarginContainer/Credits/Credit3" unique_id=1146488823]
@@ -107,7 +107,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
 text = "Kitamiya"
-uri = "https://x.com/TI_Peacher"
+uri = "https://x.com/kitanatsu_"
 
 [node name="BackButton" type="Button" parent="Panel/MarginContainer/Credits" unique_id=242717582]
 unique_name_in_owner = true

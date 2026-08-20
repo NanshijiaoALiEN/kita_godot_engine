@@ -97,6 +97,7 @@ func load_config() -> void:
 	config_data = ResourceLoader.load(CONFIG_PATH, "", ResourceLoader.CACHE_MODE_IGNORE) as ConfigData
 	if !config_data:
 		config_data = ConfigData.new()
+		save_config()
 	
 func save_config() -> void:
 	if !config_data:
