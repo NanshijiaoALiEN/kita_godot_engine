@@ -83,7 +83,7 @@ func play_sound(event_sound:EVENT_SOUND = EVENT_SOUND.TEST_SOUND) -> void:
 
 	var stream := event_sounds[sound_index]
 	if stream == null:
-		push_warning("EVENT_SOUND.%s 尚未設定音效" % EVENT_SOUND.find_key(sound_index))
+		push_warning("EVENT_SOUND.%s not set yet" % EVENT_SOUND.find_key(sound_index))
 		return
 
 	sound_player.stream = stream

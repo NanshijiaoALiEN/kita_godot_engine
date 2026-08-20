@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://dgiti5ph0gara"]
+
+[ext_resource type="Script" uid="uid://ryhrha84dblr" path="res://system/character_data.gd" id="1_63kw5"]
+
+[resource]
+script = ExtResource("1_63kw5")
+character_name = "Sylvia"
+theme_color = Color(0.81, 0.93350005, 1, 1)
+metadata/_custom_type_script = "uid://ryhrha84dblr"

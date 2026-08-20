@@ -1,17 +1,24 @@
 [gd_scene format=3 uid="uid://428t4pfndta0"]
 
 [ext_resource type="Script" uid="uid://br1fyfsiw5ehl" path="res://level/base_level.gd" id="1_qi2sl"]
+[ext_resource type="Resource" uid="uid://cx4lj5t3qnhlk" path="res://dialogue/example.dialogue" id="2_higb8"]
 [ext_resource type="PackedScene" uid="uid://cmuxccn2iafcu" path="res://actor/player/player.tscn" id="2_yy17p"]
 [ext_resource type="PackedScene" uid="uid://db33tf25kgigj" path="res://actor/camera/main_camera.tscn" id="3_5bc20"]
 [ext_resource type="Script" uid="uid://cu5vr1wimfbob" path="res://system/spawn_point_group.gd" id="4_kuxov"]
 [ext_resource type="Script" uid="uid://c837rcoov2jps" path="res://system/spawn_point.gd" id="5_7xk0t"]
 [ext_resource type="Script" uid="uid://bgq8hq57kkjhb" path="res://system/event/event_tree.gd" id="6_yqa26"]
 [ext_resource type="Script" uid="uid://b6wv1wmdjw4ir" path="res://system/event/event_trigger.gd" id="7_2p1o5"]
+[ext_resource type="PackedScene" uid="uid://cytip44y3lrst" path="res://system/event/event_sprite.tscn" id="8_rkvas"]
+[ext_resource type="Script" uid="uid://ch8qqurlrurul" path="res://system/event/dialogue_event.gd" id="9_higb8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j64pc"]
+radius = 32.0
 
 [node name="ExampleLevel" type="Node2D" unique_id=1908387971]
 script = ExtResource("1_qi2sl")
+start_dialogue = true
+dialogue = ExtResource("2_higb8")
+start_playing_music = false
 metadata/_custom_type_script = "uid://br1fyfsiw5ehl"
 
 [node name="Player" parent="." unique_id=974654855 instance=ExtResource("2_yy17p")]
@@ -38,3 +45,9 @@ metadata/_custom_type_script = "uid://b6wv1wmdjw4ir"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EventTree/EventTrigger" unique_id=57779184]
 shape = SubResource("CircleShape2D_j64pc")
+
+[node name="EventSprite" parent="EventTree" unique_id=800728843 instance=ExtResource("8_rkvas")]
+
+[node name="DialogueEvent" type="Node" parent="EventTree" unique_id=93956220]
+script = ExtResource("9_higb8")
+metadata/_custom_type_script = "uid://ch8qqurlrurul"

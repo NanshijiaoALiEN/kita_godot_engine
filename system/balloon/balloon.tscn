@@ -5,7 +5,8 @@
 [ext_resource type="FontFile" uid="uid://clwqt1ju33lvg" path="res://data/font/noto_sans/NotoSansTC-Bold.ttf" id="3_6kt6n"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 [ext_resource type="Theme" uid="uid://cxvo0woy5n16y" path="res://system/balloon/balloon_theme.tres" id="4_2lxph"]
-[ext_resource type="AudioStream" uid="uid://b80d46sb1vtko" path="res://data/sound/type_sound.ogg" id="6_won7p"]
+[ext_resource type="AudioStream" uid="uid://b8ter613gvn0y" path="res://data/sound/test_sound.tres" id="6_won7p"]
+
 
 [sub_resource type="Gradient" id="Gradient_h5due"]
 offsets = PackedFloat32Array(0.015981736, 0.80365294, 1)

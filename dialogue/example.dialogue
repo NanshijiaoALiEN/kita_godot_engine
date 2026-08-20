@@ -1,3 +1,9 @@
 ~ start
 Me: Hello
+do Sound.play_sound(Sound.EVENT_SOUND.TEST_SOUND)
+do World.player.go_nav(World.current_level.goal)
+do Interface.player.show_picture("CG1", 2)
+do Interface.player.move_to_top("CG1", 8)
+do Interface.player.remove_picture("CG1", 0.1)
+
 => END
