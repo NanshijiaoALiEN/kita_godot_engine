@@ -17,16 +17,16 @@ func _ready() -> void:
 	reset_closed()
 
 func open(new_mode:Mode = Mode.SAVE) -> void:
-	Sound.play_sound(Sound.EVENT_SOUND.SELECT)
+	Sound.play_sound(Sound.EVENT_SOUND.TEST_SOUND)
 	mode = new_mode
-	title_label.text = "セーブ" if mode == Mode.SAVE else "ロード"
+	title_label.text = "Save" if mode == Mode.SAVE else "Load"
 	confirmation.hide()
 	_refresh_slots()
 	reset_open()
 	_on_menu_open.emit()
 
 func close() -> void:
-	Sound.play_sound(Sound.EVENT_SOUND.BACK)
+	Sound.play_sound(Sound.EVENT_SOUND.TEST_SOUND)
 	reset_closed()
 	_on_menu_close.emit()
 
@@ -48,13 +48,13 @@ func _refresh_slots() -> void:
 		_add_slot_button(next_slot, null, false)
 	elif mode == Mode.LOAD and slots.is_empty():
 		var empty_label := Label.new()
-		empty_label.text = "セーブデータがありません"
+		empty_label.text = "Save Data is not available"
 		empty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		slot_list.add_child(empty_label)
 
 func _add_slot_button(slot:int, data:SaveData, exists:bool) -> void:
 	var button:Button = SLOT_BUTTON_SCENE.instantiate()
-	button.text = "スロット %d  --  %s" % [slot, _format_time(data.total_game_time)] if data else "スロット %d  --  %s" % [slot, "利用不可" if exists else "新規セーブ"]
+	button.text = "Slot %d" % slot if data else "Slot %d  --  %s" % [slot, "Unavailable" if exists else "New Save"]
 	button.pressed.connect(_on_slot_pressed.bind(slot, exists))
 	slot_list.add_child(button)
 
@@ -64,7 +64,7 @@ func _on_slot_pressed(slot:int, exists:bool) -> void:
 			close()
 	elif exists:
 		pending_slot = slot
-		confirmation_label.text = "スロット %d に上書きしますか？" % slot
+		confirmation_label.text = "Replace Save Slot %d ?" % slot
 		confirmation.show()
 	else:
 		_save(slot)
@@ -79,7 +79,3 @@ func _on_confirm_pressed() -> void:
 
 func _on_cancel_pressed() -> void:
 	confirmation.hide()
-
-func _format_time(seconds:float) -> String:
-	var total_seconds:int = int(seconds)
-	return "%02d:%02d:%02d" % [total_seconds / 3600, total_seconds / 60 % 60, total_seconds % 60]

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://428t4pfndta0"]
+
+[ext_resource type="Script" uid="uid://br1fyfsiw5ehl" path="res://level/base_level.gd" id="1_qi2sl"]
+[ext_resource type="PackedScene" uid="uid://cmuxccn2iafcu" path="res://actor/player/player.tscn" id="2_yy17p"]
+[ext_resource type="PackedScene" uid="uid://db33tf25kgigj" path="res://actor/camera/main_camera.tscn" id="3_5bc20"]
+[ext_resource type="Script" uid="uid://cu5vr1wimfbob" path="res://system/spawn_point_group.gd" id="4_kuxov"]
+[ext_resource type="Script" uid="uid://c837rcoov2jps" path="res://system/spawn_point.gd" id="5_7xk0t"]
+[ext_resource type="Script" uid="uid://bgq8hq57kkjhb" path="res://system/event/event_tree.gd" id="6_yqa26"]
+[ext_resource type="Script" uid="uid://b6wv1wmdjw4ir" path="res://system/event/event_trigger.gd" id="7_2p1o5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j64pc"]
+
+[node name="ExampleLevel" type="Node2D" unique_id=1908387971]
+script = ExtResource("1_qi2sl")
+metadata/_custom_type_script = "uid://br1fyfsiw5ehl"
+
+[node name="Player" parent="." unique_id=974654855 instance=ExtResource("2_yy17p")]
+
+[node name="MainCamera" parent="." unique_id=1139513995 instance=ExtResource("3_5bc20")]
+zoom = Vector2(2, 2)
+
+[node name="SpawnPointGroup" type="Node" parent="." unique_id=1952460044]
+script = ExtResource("4_kuxov")
+metadata/_custom_type_script = "uid://cu5vr1wimfbob"
+
+[node name="Start" type="Marker2D" parent="SpawnPointGroup" unique_id=873679199]
+script = ExtResource("5_7xk0t")
+metadata/_custom_type_script = "uid://c837rcoov2jps"
+
+[node name="EventTree" type="Node2D" parent="." unique_id=1969041745]
+position = Vector2(197, 0)
+script = ExtResource("6_yqa26")
+metadata/_custom_type_script = "uid://bgq8hq57kkjhb"
+
+[node name="EventTrigger" type="Area2D" parent="EventTree" unique_id=2098120091]
+script = ExtResource("7_2p1o5")
+metadata/_custom_type_script = "uid://b6wv1wmdjw4ir"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EventTree/EventTrigger" unique_id=57779184]
+shape = SubResource("CircleShape2D_j64pc")

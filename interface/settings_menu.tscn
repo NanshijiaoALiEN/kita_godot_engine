@@ -51,7 +51,7 @@ theme_override_constants/separation = 18
 [node name="TitleLabel" type="Label" parent="Panel/MarginContainer/Menu" unique_id=1177663571]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "設定"
+text = "Setting"
 horizontal_alignment = 1
 
 [node name="MasterLabel" type="Label" parent="Panel/MarginContainer/Menu" unique_id=1552419814]
@@ -95,4 +95,4 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "戻る"
+text = "Back"

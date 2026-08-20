@@ -51,40 +51,21 @@ theme_override_constants/separation = 22
 [node name="TitleLabel" type="Label" parent="Panel/MarginContainer/Credits" unique_id=1898164488]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "クレジット"
+text = "Credit"
 horizontal_alignment = 1
 
-[node name="Story" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=289837596]
+[node name="Credit1" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=289837596]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Story" unique_id=937262129]
+[node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Credit1" unique_id=937262129]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
 theme_override_font_sizes/font_size = 18
-text = "オリジナル & テキスト"
+text = "Game"
 horizontal_alignment = 1
 
-[node name="CityName" type="LinkButton" parent="Panel/MarginContainer/Credits/Story" unique_id=17033272]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
-text = "Peacher"
-uri = "https://x.com/TI_Peacher"
-
-[node name="Code" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=298236959]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Code" unique_id=1170004307]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
-theme_override_font_sizes/font_size = 18
-text = "プログラム & グラフィック"
-horizontal_alignment = 1
-
-[node name="TextName" type="LinkButton" parent="Panel/MarginContainer/Credits/Code" unique_id=1744244263]
+[node name="Credit1Name" type="LinkButton" parent="Panel/MarginContainer/Credits/Credit1" unique_id=17033272]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -92,43 +73,41 @@ theme_override_font_sizes/font_size = 24
 text = "Kitamiya"
 uri = "https://x.com/kitanatsu_"
 
-[node name="Sound" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=1616896022]
+[node name="Credit2" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=768699817]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Sound" unique_id=1422648478]
+[node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Credit2" unique_id=360922224]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
 theme_override_font_sizes/font_size = 18
-text = "サウンド"
+text = "Game"
 horizontal_alignment = 1
 
-[node name="SoundName" type="LinkButton" parent="Panel/MarginContainer/Credits/Sound" unique_id=1586386112]
-unique_name_in_owner = true
+[node name="Credit1Name" type="LinkButton" parent="Panel/MarginContainer/Credits/Credit2" unique_id=2062319306]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
-text = "Pecu"
-uri = "https://x.com/PeculiarMGTS"
+text = "Kitamiya"
+uri = "https://x.com/TI_Peacher"
 
-[node name="Assets" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=825230311]
-visible = false
+[node name="Credit3" type="VBoxContainer" parent="Panel/MarginContainer/Credits" unique_id=1048650724]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Assets" unique_id=2100258849]
+[node name="Role" type="Label" parent="Panel/MarginContainer/Credits/Credit3" unique_id=1257103109]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.72, 0.78, 0.62, 1)
 theme_override_font_sizes/font_size = 18
-text = "素材"
+text = "Game"
 horizontal_alignment = 1
 
-[node name="AssetsName" type="LinkButton" parent="Panel/MarginContainer/Credits/Assets" unique_id=1435137036]
-unique_name_in_owner = true
+[node name="Credit1Name" type="LinkButton" parent="Panel/MarginContainer/Credits/Credit3" unique_id=1146488823]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
-text = "Salome"
+text = "Kitamiya"
+uri = "https://x.com/TI_Peacher"
 
 [node name="BackButton" type="Button" parent="Panel/MarginContainer/Credits" unique_id=242717582]
 unique_name_in_owner = true
@@ -136,4 +115,4 @@ custom_minimum_size = Vector2(240, 56)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
-text = "戻る"
+text = "Back"

@@ -4,12 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ccrirf4ms1mu7" path="res://interface/settings_menu.tscn" id="2_settings"]
 [ext_resource type="FontFile" uid="uid://cd78vof0q2men" path="res://data/font/noto_serif/NotoSerifTC-Bold.ttf" id="3_t7kxc"]
 [ext_resource type="Theme" uid="uid://cq7rh3aso81ck" path="res://interface/theme.tres" id="3_theme"]
-[ext_resource type="Texture2D" uid="uid://dod7iro0rnpii" path="res://picture/CG_MENU.png" id="3_tmsxh"]
 [ext_resource type="PackedScene" uid="uid://dnk5vetn12qp2" path="res://interface/save_slot_menu.tscn" id="6_save_slots"]
 [ext_resource type="PackedScene" uid="uid://btw2x3mtynb23" path="res://interface/credit_screen.tscn" id="7_credits"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t6ocp"]
-load_path = "res://.godot/imported/CG_MENU_2.png-800da2c91fe38b6c55652122400b3657.ctex"
 
 [sub_resource type="Gradient" id="Gradient_tmsxh"]
 offsets = PackedFloat32Array(0.04915912, 1)
@@ -39,30 +35,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.03, 0.035, 0.045, 1)
 
-[node name="TitleScreen" type="TextureRect" parent="." unique_id=1718338139]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_tmsxh")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="TitleScreen2" type="TextureRect" parent="." unique_id=2095199987]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("CompressedTexture2D_t6ocp")
-expand_mode = 3
-stretch_mode = 4
-
 [node name="Gradient" type="TextureRect" parent="." unique_id=780880445]
 layout_mode = 1
 anchors_preset = 15
@@ -87,7 +59,7 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_t7kxc")
 theme_override_font_sizes/font_size = 64
-text = "KITA GODOT ENGINE"
+text = "KITA GODOT TEMPLATE"
 
 [node name="TitleLabel2" type="Label" parent="MainMenu" unique_id=1416471216]
 modulate = Color(1, 1, 1, 0.5882353)

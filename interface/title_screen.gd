@@ -11,7 +11,6 @@ class_name TitleScreen
 @onready var settings_menu: SettingsMenu = %SettingsMenu
 @onready var credit_screen: CreditScreen = %CreditScreen
 @onready var save_slot_menu: SaveSlotMenu = %SaveSlotMenu
-@onready var title_screen_2: TextureRect = $TitleScreen2
 
 var continue_available: bool = false
 var is_enabled: bool = false

@@ -56,20 +56,13 @@ func level_set_up(spawn_id:StringName = &"start") -> void:
 		push_error("BaseLevel setup failed: spawn point not found: %s" % spawn_id)
 		return
 
-	var player_position := spawn.global_position
-	if Game.was_loaded_from_save:
-		# The saved position is used only for the first level entered after loading.
-		Game.was_loaded_from_save = false
-		if Game.save_data and Game.save_data.has_player_global_position:
-			player_position = Game.save_data.player_global_position
-			
 	World.camera = camera
 	World.camera.enabled = true
 	World.camera.limit()
 	
 	World.player = player
-	World.player.global_position = player_position
-	World.camera.global_position = player_position
+	World.player.global_position = spawn.global_position
+	World.camera.global_position = spawn.global_position
 	World.camera.follow_target = World.player
 	World.camera.reset_smoothing()
 	World.camera.camera_follow()

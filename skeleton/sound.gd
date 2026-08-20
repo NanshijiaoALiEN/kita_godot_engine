@@ -10,11 +10,19 @@ var sound_player:AudioStreamPlayer
 
 enum EVENT_SOUND {
 	TEST_SOUND,
+	CONFIRM,
+	SELECT,
+	BACK,
+	BOOM_1
 }
 
 ## Audio streams indexed by EVENT_SOUND.
 var event_sounds:Array[AudioStream] = [
-	preload("res://data/sound/test_sound.ogg"),
+	preload("res://data/sound/test_sound.tres"),
+	preload("res://data/sound/test_sound.tres"),
+	preload("res://data/sound/test_sound.tres"),
+	preload("res://data/sound/test_sound.tres"),
+	preload("res://data/sound/test_sound.tres"),
 ]
 
 ## Replace the current music, optionally fading the old and new tracks.
@@ -67,7 +75,7 @@ func change_volume(linear_volume:float, fade_time:float) -> void:
 	)
 	
 ## Play one mapped event sound and wait for the shared player to finish.
-func play_sound(event_sound:EVENT_SOUND = EVENT_SOUND.DEFAULT) -> void:
+func play_sound(event_sound:EVENT_SOUND = EVENT_SOUND.TEST_SOUND) -> void:
 	var sound_index := int(event_sound)
 	if sound_index < 0 or sound_index >= event_sounds.size():
 		push_warning("找不到 EVENT_SOUND 對應的音效：%s" % sound_index)

@@ -1,4 +1,4 @@
-## Global game state, save-slot, play-time, and user-configuration service.
+## Global game state, save-slot, and user-configuration service.
 ##
 ## Save files are Resources stored under user://. Level restoration is delegated
 ## to World so the same loading pipeline is used for new games and loaded saves.
@@ -23,9 +23,6 @@ const MIN_VOLUME_DB:float = -80.0
 
 var current_slot:int = 0
 
-var was_loaded_from_save:bool = false
-var total_game_time:float = 0.0
-var game_time_started_at:float = 0.0
 var game_state:GAMESTATE = GAMESTATE.TITLE
 var previous_game_state:GAMESTATE = GAMESTATE.TITLE
 
@@ -36,11 +33,8 @@ signal on_game_state_changed(game_state:GAMESTATE)
 func new_game() -> void:
 	save_data = SaveData.new()
 	current_slot = 0
-	was_loaded_from_save = false
-	total_game_time = 0.0
-	game_time_started_at = Time.get_unix_time_from_system()
 	
-## Persist the current level, player position, global variables, and play time.
+## Persist the current level and global variables.
 ## Only existing slots or the next free sequential slot may be written.
 func save_game(slot:int) -> bool:
 	if slot < 1 or slot > MAX_SAVE_SLOTS:
@@ -53,11 +47,7 @@ func save_game(slot:int) -> bool:
 
 	save_data.current_level_data = World.current_level_data
 	save_data.current_level = World.current_level_data
-	save_data.has_player_global_position = is_instance_valid(World.player)
-	if save_data.has_player_global_position:
-		save_data.player_global_position = World.player.global_position
 	save_data.global_variables = Global.get_variables()
-	save_data.total_game_time = get_total_game_time()
 
 	if ResourceSaver.save(save_data, _get_save_path(slot)) == OK:
 		current_slot = slot
@@ -68,18 +58,15 @@ func save_game(slot:int) -> bool:
 ## Restore a save resource, then ask World to load its recorded level.
 func load_game(slot:int) -> bool:
 	if !has_save(slot):
-		was_loaded_from_save = false
 		return false
 
 	var loaded_data := ResourceLoader.load(_get_save_path(slot), "", ResourceLoader.CACHE_MODE_IGNORE) as SaveData
 	if !loaded_data:
-		was_loaded_from_save = false
 		return false
 
 	save_data = loaded_data
 	current_slot = slot
 	_restore_save_data()
-	was_loaded_from_save = true
 	on_game_loaded.emit()
 	if save_data.current_level_data:
 		return await World.switch_level(save_data.current_level_data)
@@ -149,16 +136,9 @@ func can_pause() -> bool:
 	
 func pause_game() -> void:
 	pass
-	
-func get_total_game_time() -> float:
-	if game_time_started_at <= 0.0:
-		return total_game_time
-	return total_game_time + Time.get_unix_time_from_system() - game_time_started_at
 
 func _restore_save_data() -> void:
 	if !save_data.current_level_data:
 		save_data.current_level_data = save_data.current_level
-	total_game_time = save_data.total_game_time
-	game_time_started_at = Time.get_unix_time_from_system()
 	Global.set_variables(save_data.global_variables)
 	

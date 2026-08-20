@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d1iqfmmto8buj" path="res://interface/pause_screen.gd" id="1_dlw7u"]
 [ext_resource type="PackedScene" uid="uid://ccrirf4ms1mu7" path="res://interface/settings_menu.tscn" id="2_settings"]
 [ext_resource type="Theme" uid="uid://cq7rh3aso81ck" path="res://interface/theme.tres" id="3_theme"]
-[ext_resource type="FontFile" uid="uid://cgqpbaoqveben" path="res://data/font/noto_serif_jp/NotoSerifJP-SemiBold.ttf" id="3_wrwo0"]
+[ext_resource type="FontFile" uid="uid://cyxk8xuoqmq48" path="res://data/font/noto_serif/NotoSerifTC-SemiBold.ttf" id="3_wrwo0"]
 [ext_resource type="PackedScene" uid="uid://dnk5vetn12qp2" path="res://interface/save_slot_menu.tscn" id="5_save_slots"]
 
 [node name="PauseScreen" type="Control" unique_id=1393484392]
@@ -52,35 +52,35 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "ゲームに戻る"
+text = "Continue"
 
 [node name="SaveButton" type="Button" parent="CenterContainer/MainMenu" unique_id=1684131682]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "セーブ"
+text = "Save"
 
 [node name="LoadButton" type="Button" parent="CenterContainer/MainMenu" unique_id=1536152629]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "ロード"
+text = "Load"
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/MainMenu" unique_id=1343858460]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "設定"
+text = "Setting"
 
 [node name="TitleButton" type="Button" parent="CenterContainer/MainMenu" unique_id=732133677]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "タイトルへ"
+text = "Back to Title"
 
 [node name="SettingsMenu" parent="." unique_id=1665925783 instance=ExtResource("2_settings")]
 unique_name_in_owner = true

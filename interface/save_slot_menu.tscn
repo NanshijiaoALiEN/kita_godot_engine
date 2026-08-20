@@ -52,7 +52,7 @@ theme_override_constants/separation = 16
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "セーブ"
+text = "Save"
 horizontal_alignment = 1
 
 [node name="SlotList" type="VBoxContainer" parent="Panel/Margin/Content" unique_id=569385257]
@@ -64,7 +64,7 @@ theme_override_constants/separation = 8
 [node name="CloseButton" type="Button" parent="Panel/Margin/Content" unique_id=1049485393]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
-text = "戻る"
+text = "Back"
 
 [node name="Confirmation" type="PanelContainer" parent="." unique_id=1773405761]
 unique_name_in_owner = true

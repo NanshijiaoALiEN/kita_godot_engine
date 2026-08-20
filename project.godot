@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Kita Godot Engine"
+config/name="Kita Godot Project"
 config/version="0.1"
 run/main_scene="uid://bkwatf8adlk1b"
 config/features=PackedStringArray("4.7", "Forward Plus")
@@ -29,7 +29,6 @@ Interface="*uid://6lnhpkwruhvc"
 Sound="*uid://n7xn6rg2qiey"
 DialogueManager="*uid://c3rodes2l3gxb"
 World="*uid://cs27l7dkymeod"
-BetterTerrain="*uid://7f3out70t57d"
 Global="*uid://clepq5c86afeo"
 
 [dialogue_manager]
@@ -46,7 +45,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [file_customization]
 
@@ -108,8 +107,7 @@ pause={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translation/test_start.en.translation")
-locale/translations_pot_files=PackedStringArray("res://dialogue/town.dialogue", "res://dialogue/secret_shop.dialogue", "res://dialogue/shrine.dialogue", "res://dialogue/spider_cave.dialogue", "res://dialogue/sanae_room.dialogue", "res://dialogue/sanae_hair.dialogue", "res://dialogue/sanae_cabinet.dialogue", "res://dialogue/ending.dialogue", "res://dialogue/sanae_sandal.dialogue", "res://dialogue/extra_add_dialogue_0714.dialogue", "res://dialogue/extra_add_dialogue_0720.dialogue", "res://dialogue/sanae_panty.dialogue", "res://dialogue/Additional Scenario_0724.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/example.dialogue")
 
 [physics]
 

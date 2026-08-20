@@ -18,7 +18,7 @@ func _ready() -> void:
 	reset_closed()
 
 func open() -> void:
-	Sound.play_sound(Sound.EVENT_SOUND.SELECT)
+	Sound.play_sound(Sound.EVENT_SOUND.TEST_SOUND)
 	load_from_config_data()
 	if await fade_in():
 		set_enabled(true)
@@ -57,7 +57,7 @@ func _on_sound_slider_value_changed(value: float) -> void:
 	Game.apply_config()
 
 func _on_back_button_pressed() -> void:
-	Sound.play_sound(Sound.EVENT_SOUND.BACK)
+	Sound.play_sound(Sound.EVENT_SOUND.TEST_SOUND)
 	Game.save_config()
 
 	await close()
