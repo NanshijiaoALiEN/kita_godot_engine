@@ -1,4 +1,8 @@
-# World Skeleton
+## Runtime owner of level loading, the active player, and the active camera.
+##
+## Root injects [member world_node], while each [BaseLevel] supplies its player
+## and camera during setup. Normal level switches discard the current level.
+## Mini-level switches temporarily detach and preserve it for restoration.
 extends Node
 
 const DEFAULT_LEVEL = preload("res://level/level_data/default_level.tres")
@@ -21,34 +25,8 @@ signal on_level_ready
 signal on_mini_level_entered
 signal on_mini_level_exited
 
-
-
-## AVAILABLE LEVEL
-const ABOVE_CABINET = preload("uid://cenias3ldv44u")
-const BELOW_CABINET = preload("uid://baoad5xj55ofs")
-const SANAE_FLOOR = preload("uid://d1wn053gxeynn")
-const SANAE_FLOOR_BAREFEET = preload("uid://b1pcwe5s4qdvf")
-const SANAE_ROOM = preload("uid://beogna0u62p0q")
-const SECRET_SHOP = preload("uid://oodh36gx8qvh")
-const SHRINE = preload("uid://bdjcl1wxksek6")
-const SPIDER_CAVE = preload("uid://dqebr3cscpqbj")
-const TOWN_LEVEL = preload("uid://dr01tfwnjqwca")
-const SANAE_PANTY = preload("uid://cevh3x3p67r0a")
-const SANAE_SANDAL = preload("uid://be7rd238m4kvj")
-const ENDING = preload("uid://dgrm1wci62k42")
-
-
-const GAME_OVER = preload("uid://cce3anu42kunc")
-
-# ENDING
-const BOOB_CRUSHED_END = preload("uid://k2xeavc7tqno")
-const CLIMB_FAILED_END = preload("uid://ifmdy6yyb67d")
-const SANDAL_CRUSH_END = preload("uid://2rtnylm8008i")
-const BAREFEET_CRUSH_END = preload("uid://djet6kw7paih3")
-const CLIMB_SUCCESS_END = preload("uid://d3fq46pcgsdwr")
-const ESCAPE_SANAE = preload("uid://crlfuavnkogv8")
-
-# Switch to the specified level, then set up the spawn point with spawn_id.
+## Fade out, instantiate the requested [BaseLevel], and defer its spawn setup.
+## Returns false when a switch is already running or the level cannot be loaded.
 func switch_level(level_data:LevelData, spawn_id:StringName = &"start") -> bool:
 	if is_switching_level:
 		return false
@@ -213,7 +191,7 @@ func _clear_suspended_level() -> void:
 	suspend_level = null
 
 
-# Load a new level scene and discard the current level.
+## Instantiate a level scene and verify that its root is a [BaseLevel].
 func _load_level(level_path:String, free_current_level:bool = true, level_label:String = "level") -> bool:
 	var level_resource := ResourceLoader.load(level_path)
 	if !(level_resource is PackedScene):

@@ -1,5 +1,7 @@
 @icon("res://data/icon/dialogue_event.svg")
 extends BaseEvent
+## Event step that plays a Dialogue Manager resource through the Event autoload.
+## Completion is emitted only after Dialogue Manager ends the conversation.
 class_name DialogueEvent
 
 @export var dialogue:DialogueResource

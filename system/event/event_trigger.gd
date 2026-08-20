@@ -1,9 +1,15 @@
 extends Area2D
+## Interaction area that starts its direct-parent EventTree.
+##
+## The area reacts only to PlayerEventTrigger. In touch mode entry starts the tree
+## immediately; otherwise entry enables the project input action event_trigger.
+## Add one or more CollisionShape2D children in the authored scene.
 class_name EventTrigger
 
 @export var touch_trigger:bool = false
 
 var event_tree:EventTree
+## True while a PlayerEventTrigger overlaps this interaction area.
 var can_trigger:bool = false
 
 signal _on_player_entered

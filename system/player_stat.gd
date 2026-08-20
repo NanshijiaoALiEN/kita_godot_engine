@@ -1,4 +1,8 @@
 extends Resource
+## Shared movement and stamina tuning data for Player states.
+##
+## Runtime stamina is clamped to [member max_stamina] and emits change/depletion
+## signals so UI and state logic do not need to poll the value.
 class_name PlayerStat
 
 signal on_health_change(value:int)

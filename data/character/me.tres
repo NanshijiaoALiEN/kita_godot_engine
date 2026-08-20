@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_risnx")
-character_name = "俺"
+character_name = "Me"
 metadata/_custom_type_script = "uid://ryhrha84dblr"

@@ -1,5 +1,9 @@
 @icon("res://data/icon/main_camera.svg")
 extends Camera2D
+## Level camera with bounds, target-follow signals, tweened moves, zoom, and shake.
+##
+## Each BaseLevel must expose a MainCamera child. The boundary markers are used by
+## [method limit] to convert authored scene positions into Camera2D limits.
 class_name MainCamera
 
 @export var follow_target:Node2D
@@ -30,12 +34,14 @@ func _physics_process(delta: float) -> void:
 	offset.x = noise.get_noise_3d(time * 100.0, 0, 0) * shake_max_x * shake
 	offset.y = noise.get_noise_3d(0, time * 100.0, 0) * shake_max_y * shake
 
+## Apply camera limits from the authored top-right and bottom-left markers.
 func limit():
 	limit_top = int(top_right_marker.global_position.y)
 	limit_bottom = int(bottom_left_marker.global_position.y)
 	limit_right = int(top_right_marker.global_position.x)
 	limit_left = int(bottom_left_marker.global_position.x)
 	
+## Notify the camera scene's connected follow behavior to resume tracking.
 func camera_follow():
 	on_camera_follow.emit()
 

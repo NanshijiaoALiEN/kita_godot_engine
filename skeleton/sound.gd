@@ -1,4 +1,7 @@
-## Sound Skeleton
+## Global music and one-shot sound playback service.
+##
+## Root injects the audio players and assigns their buses. EVENT_SOUND values map
+## by index to [member event_sounds], so keep the enum and array in the same order.
 extends Node
 
 var music_player:AudioStreamPlayer
@@ -6,54 +9,15 @@ var sound_player:AudioStreamPlayer
 
 
 enum EVENT_SOUND {
-	DEFAULT,
-	BOOM_1,
-	BOOM_2,
-	DISTANT_BOOM_1,
-	DISTANT_BOOM_2,
-	DISTANT_BOOM_3,
-	RUMBLE,
-	FALL,
-	GET,
-	BODY_HIT,
-	SUCCESS,
-	FAILED,
-	SELECT,
-	BACK,
-	SQUISH,
-	TELEPORT,
-	CUM,
-	CLOTH,
-	CUM_DEEP,
-	CONFIRM,
-	
-	
+	TEST_SOUND,
 }
 
-# Array 的索引依序對應 EVENT_SOUND：DEFAULT、CORRECT、FAIL。
-# 可直接在 Inspector 中指定各個常用音效。
+## Audio streams indexed by EVENT_SOUND.
 var event_sounds:Array[AudioStream] = [
-	preload("res://data/sound/type_sound.ogg"),
-	preload("res://data/sound/boom_step1.mp3"),
-	preload("res://data/sound/boom_step2.wav"),
-	preload("res://data/sound/Distant Booming Thud 1.wav"),
-	preload("res://data/sound/Distant Booming Thud 2.wav"),
-	preload("res://data/sound/Distant Booming Thud 3.wav"),
-	preload("res://data/sound/rumble.mp3"),
-	preload("res://data/sound/Fall.mp3"),
-	preload("res://data/sound/computer_OS_welcome_01.ogg"),
-	preload("res://data/sound/Bodyfall on Dirt 3.mp3"),
-	preload("res://data/sound/Good One - Organ.ogg"),
-	preload("res://data/sound/phaserDown3.ogg"),
-	preload("res://data/sound/threeTone2.ogg"),
-	preload("res://data/sound/twoTone2.ogg"),
-	preload("res://data/sound/squishy_thing_08.ogg"),
-	preload("res://data/sound/teleport_sound.mp3"),
-	preload("res://data/sound/squishy_thing_08.ogg"),
-	preload("res://data/sound/Clothes 2.wav"),
-	preload("res://data/sound/cum_smash1.wav"),
-	preload("res://data/sound/computer_instant_message_alert_02.ogg")]
+	preload("res://data/sound/test_sound.ogg"),
+]
 
+## Replace the current music, optionally fading the old and new tracks.
 func play_music(stream:AudioStream, fade_in_time:float = 1.0) -> void:
 	if music_player.stream == stream and music_player.playing:
 		return
@@ -102,6 +66,7 @@ func change_volume(linear_volume:float, fade_time:float) -> void:
 		fade_time
 	)
 	
+## Play one mapped event sound and wait for the shared player to finish.
 func play_sound(event_sound:EVENT_SOUND = EVENT_SOUND.DEFAULT) -> void:
 	var sound_index := int(event_sound)
 	if sound_index < 0 or sound_index >= event_sounds.size():

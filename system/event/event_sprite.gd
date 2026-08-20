@@ -1,5 +1,11 @@
 @icon("res://data/icon/event_sprite.svg")
 extends EventComponent
+## Animated interaction marker for an EventTree.
+##
+## The component connects to sibling EventTrigger nodes and reflects idle,
+## in-range, and triggered states through AnimationPlayer animations. Instantiate
+## event_sprite.tscn so the required Sprite2D, AnimationPlayer, and animation names
+## are present.
 class_name EventSprite
 
 @onready var sprite:Sprite2D = $Sprite2D
@@ -7,6 +13,7 @@ class_name EventSprite
 
 var player_in_trigger_count:int = 0
 
+## Connect tree/trigger signals and apply the EventTree's initial disabled state.
 func component_setup() -> void:
 	if not animation_player.animation_finished.is_connected(_on_animation_finished):
 		animation_player.animation_finished.connect(_on_animation_finished)

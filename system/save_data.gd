@@ -1,4 +1,8 @@
 extends Resource
+## Serializable snapshot written to a numbered user:// save slot by Game.
+##
+## It stores portable Resources and values only; scene instances are recreated by
+## World and BaseLevel when loading.
 class_name SaveData
 
 # Game Progress
@@ -9,8 +13,5 @@ class_name SaveData
 @export var has_player_global_position:bool = false
 @export var global_variables:Dictionary = {}
 @export var total_game_time:float = 0.0
-
-# Girl Data
-@export var girl_data_list:Array[GiantessData]
 
 @export var game_clear:bool = false

@@ -2,7 +2,6 @@
 extends Menu
 class_name TitleScreen
 
-const TITLE_MUSIC = preload("uid://du0itfxxvjdnu")
 
 @onready var new_game_button: Button = %NewGameButton
 @onready var continue_button: Button = %ContinueButton
@@ -25,10 +24,8 @@ func _ready() -> void:
 
 func open() -> void:
 	_update_continue_button()
-	title_screen_2.visible = Game.config_data.finished_game
 	
 	show()
-	Sound.play_music(TITLE_MUSIC)
 	_on_menu_open.emit()
 
 func close() -> void:

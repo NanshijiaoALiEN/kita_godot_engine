@@ -1,4 +1,9 @@
-## Game Skeleton
+## Global game state, save-slot, play-time, and user-configuration service.
+##
+## Save files are Resources stored under user://. Level restoration is delegated
+## to World so the same loading pipeline is used for new games and loaded saves.
+## Systems that temporarily change [member game_state] should restore the state
+## they observed before starting.
 extends Node
 
 enum GAMESTATE {
@@ -35,6 +40,8 @@ func new_game() -> void:
 	total_game_time = 0.0
 	game_time_started_at = Time.get_unix_time_from_system()
 	
+## Persist the current level, player position, global variables, and play time.
+## Only existing slots or the next free sequential slot may be written.
 func save_game(slot:int) -> bool:
 	if slot < 1 or slot > MAX_SAVE_SLOTS:
 		return false
@@ -58,6 +65,7 @@ func save_game(slot:int) -> bool:
 		return true
 	return false
 		
+## Restore a save resource, then ask World to load its recorded level.
 func load_game(slot:int) -> bool:
 	if !has_save(slot):
 		was_loaded_from_save = false
@@ -124,6 +132,7 @@ func _set_bus_volume(bus_name:StringName, volume:float) -> void:
 func _get_save_path(slot:int) -> String:
 	return "user://save_data_%d.tres" % slot
 
+## Change the global state and notify listeners only when the value changed.
 func set_game_state(state:GAMESTATE) -> void:
 	if game_state == state:
 		return

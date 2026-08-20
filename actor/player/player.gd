@@ -1,6 +1,12 @@
 @tool
 @icon("res://data/icon/player.svg")
 extends CharacterBody2D
+## Player facade shared by top-down and platformer movement modes.
+##
+## Movement behavior is delegated to child State nodes through signals. The
+## exported ActorSprite, PlayerStat, PlayerEventTrigger, and balloon references
+## are required by the corresponding presentation and interaction features.
+## World publishes the active Player after a BaseLevel finishes setup.
 class_name Player
 
 enum Direction {
@@ -51,6 +57,7 @@ func _ready() -> void:
 			state_machine.current_state = static_state
 			motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 
+## Enter the state selected by [member initial_state] after level presentation.
 func start():
 	match initial_state:
 		"StaticState":
@@ -78,6 +85,7 @@ func go_static() -> void:
 func go_move() -> void:
 	go_move_state.emit()
 	
+## Request navigation and suspend the caller until the active nav state finishes.
 func go_nav(goal:Node2D) -> void:
 	if _is_navigating:
 		push_error("Player.go_nav() was called while navigation is already active.")
@@ -175,6 +183,7 @@ func _get_initial_direction_vector() -> Vector2:
 		_:
 			return Vector2.UP
 			
+## Rotate the forward interaction area to match the latest movement direction.
 func set_event_trigger_direction():
 	if Input.is_action_just_pressed(&"up"):
 		player_event_trigger.rotation_degrees = 90

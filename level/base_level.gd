@@ -1,4 +1,10 @@
 extends Node2D
+## Base class and setup contract for loadable level scenes.
+##
+## A level must contain MainCamera, Player, and SpawnPointGroup children. Spawn
+## points are selected by a case-insensitive match between their node name and
+## the spawn_id passed by World. Setup publishes the player/camera to World,
+## positions them, starts optional presentation, then starts player control.
 class_name BaseLevel
 
 var player:Player
@@ -33,6 +39,7 @@ func _ready() -> void:
 	assert(player)
 	assert(spawn_point_group)
 
+## Resolve the requested spawn, configure World references, and start the level.
 func level_set_up(spawn_id:StringName = &"start") -> void:
 	if !camera:
 		push_error("BaseLevel setup failed: MainCamera is not available.")

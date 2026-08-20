@@ -1,4 +1,8 @@
 extends Resource
+## Serializable catalog entry for a loadable level.
+##
+## World loads [member level_path] and requires that scene's root to extend
+## [BaseLevel]. The remaining fields provide UI metadata and checkpoint policy.
 class_name LevelData
 
 @export var level_name:String

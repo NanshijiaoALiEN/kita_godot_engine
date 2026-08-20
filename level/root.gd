@@ -1,4 +1,9 @@
-## Game Root
+## Composition root for the running game.
+##
+## This node receives scene-owned dependencies through exported properties, then
+## injects them into the Event, Game, Interface, Sound, and World autoloads. It
+## also owns the global pause/title flow. Keep gameplay-specific logic in levels,
+## actors, or event nodes instead of adding it here.
 extends Node
 
 #World
@@ -20,7 +25,7 @@ var current_level:BaseLevel
 var player:Player
 
 func _ready() -> void:
-	## Initial Setup
+	## Load persistent settings before exposing scene services to the autoloads.
 	Game.load_config()
 	Game.apply_config()
 
