@@ -59,3 +59,8 @@ The global Game service manages common game states such as title, playing, pause
 
 - [Kenney Assets](https://kenney.nl/)
 - [Dialogue Manager](https://github.com/nathanhoad/godot_dialogue_manager)
+
+Code is licensed under the MIT License.
+
+Game assets, including artwork, music, sound effects, and other media,
+are not covered by the MIT License unless otherwise stated.
